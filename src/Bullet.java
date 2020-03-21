@@ -32,7 +32,7 @@ public class Bullet{
         this.bulletType = bulletType;
     }
     public void setPosition(Point position){
-        this.position = position
+        this.position = position;
     }
     public void setDamage(int damage){
         this.damage = damage;

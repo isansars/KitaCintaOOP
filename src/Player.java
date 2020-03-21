@@ -1,4 +1,4 @@
-public static class Player{
+public class Player{
     // Atribut
     protected static int sunPoints;
     protected static int giliran; //  ini mending int apa boolean?

@@ -1,40 +1,54 @@
-public class Point {
+public class Point{
     private int x, y; // absis dan ordinat
 
     // Constructor
     // Set titik mula-mula ke (0, 0)
-    public Point();
+    public Point() {
+      this.x = 0;
+      this.y = 0;
+    }
 
     // Set titik mula-mula ke (x, y)
-    public Point(int x, int y);
+    public Point(int x, int y) {
+      this.x = x;
+      this.y = y;
+    }
 
-    // Getter
-    public int getAbsis();
-    public int getOrdinat();
+    public int getAbsis() {
+      return x;
+    }
 
-    // Setter
-    public void setAbsis(int x);
-    public void setOrdinat(int y);
+    public int getOrdinat() {
+      return y;
+    }
 
-    // Menghasilkan true jika titik (x, y) berada di (0, 0)
-    public boolean isOrigin();
+    public void setAbsis(int x) {
+      this.x = x;
+    }
 
-    // Menghasilkan true jika titik pada argumen sama dengan dirinya
-    public boolean isEqual(Point p);
+    public void setOrdinat(int y) {
+      this.y = y;
+    }
 
     // Mengubah titik dengan penambahan Point argumen
-    public void translate(Point p);
+    public void translate(Point p) {
+      this.x += p.x;
+      this.y += p.y;
+    }
 
     // Mentranslasikan titik sebesar (x, y)
-    public void translate(int x, int y);
-
-    // Menghasilkan nomor kuadran dari titik sekarang
-    // Sebuah titik yang berada pada sumbu x atau y tidak akan dicoba
-    public int kuadran();
+    public void translate(int x, int y) {
+      this.x += x;
+      this.y += y;
+    }
 
     // Menghasilkan jarak antara titik sekarang dengan Point argumen
-    public double distance(Point p);
+    public double distance(Point p) {
+      return Math.sqrt((this.x - p.x) * (this.x - p.x) + (this.y - p.y) * (this.y - p.y));
+    }
 
     // Menuliskan titik ke layar dengan format "(x,y)"
-    public void print();
+    public void print() {
+      System.out.println("(" + this.x + "," + this.y + ")");
+    }
 }
