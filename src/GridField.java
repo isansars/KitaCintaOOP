@@ -11,7 +11,7 @@ public class GridField{
       
     public GridField(){  
         f = new JFrame();
-        arrayButton = new JButton[28];
+        arrayButton = new JButton[60];
         
         //translasi point ke index arrayButton
         //(1,4) index 0
@@ -45,16 +45,16 @@ public class GridField{
 
         //insert into array
         int i;
-        for(i = 0; i <= 27; i++) {
+        for(i = 0; i <= 59; i++) {
             arrayButton[i] = new JButton("");
         }
 
         //buat grid     
-        for (i = 0; i <= 27; i ++) {
+        for (i = 0; i <= 59; i ++) {
             f.add(arrayButton[i]);
         }
       
-        f.setLayout(new GridLayout(4,7));  
+        f.setLayout(new GridLayout(4,15));  
         //setting grid layout of 4 rows and 7 columns  
       
         f.setSize(700,400);  
