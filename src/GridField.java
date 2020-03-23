@@ -60,6 +60,11 @@ public class GridField{
         f.setSize(700,400);  
         f.setVisible(true);  
     }
+
+    //getter
+    public String getTextButton(int i) {
+        return arrayButton[i].getText();
+    }
     
     public void editGrid(String code, int position) {
     //position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
