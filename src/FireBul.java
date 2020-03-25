@@ -1,16 +1,7 @@
 public class FireBul extends Bullet{
-    /* Atribut
-    protected String bulletType;
-    protected Point position;
-    protected int damage;
-    protected int speed; */
+    // turunan Bullet dengan speed = 2, damage = 3, dan bulletType = "o" .
 
-    public FireBul(){
-        super("o", )
-
-        this.bulletType = bulletType;
-        this.position   = position;
-        this.damage     = damage;
-        this.speed      = speed;
+    public FireBul(int plantPosition, GridField grid, ArrayList<Bullet> arr){
+        super("o", 3, 2, plantPosition, grid, arr);
     }
 }
