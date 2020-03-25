@@ -1,9 +1,10 @@
 public abstract class Plant{
     // Atribut
-    protected Point position;
+    protected int position;
+    protected int nextPosition;
     protected int sunPoints;
     protected int health;
-    protected Bullet bulletType;
+    protected Bullet bullet;
     protected int attFreq;
 
     // Method

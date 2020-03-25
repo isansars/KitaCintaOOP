@@ -1,24 +1,32 @@
 public class Bullet{
     // Atribut
     protected String bulletType;
-    protected Point position;
+    protected int position;
+    protected int nextPosition;
     protected int damage;
     protected int speed;
 
     // Konstruktor
-    public Bullet(String bulletType, Point position, int damage, int speed){
-        this.bulletType = bulletType;
-        this.position   = position;
-        this.damage     = damage;
-        this.speed      = speed;
+    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, ArrayList<Bullet> arr){
+        this.bulletType     = bulletType;
+        this.damage         = damage;
+        this.speed          = speed;
+        this.position       = plantPosition + 1;
+        this.nextPosition   = plantPosition + 1 + speed;
+
+        grid.editGrid(bulletType, this.position);
+        arr.set(position, this);
     }
 
     // Getter
     public String getBulletType(){
         return bulletType;
     }
-    public Point getPosition(){
+    public int getPosition(){
         return position;
+    }
+    public int getNextPosition() {
+        return nextPosition;
     }
     public int getDamage(){
         return damage;
@@ -31,7 +39,7 @@ public class Bullet{
     public void setBulletType(String bulletType){
         this.bulletType = bulletType;
     }
-    public void setPosition(Point position){
+    public void setPosition(int position){
         this.position = position;
     }
     public void setDamage(int damage){
@@ -42,7 +50,25 @@ public class Bullet{
     }
 
     // Method
-    public void incrementPos(){
-        this.position.translate(1, 0); // increment 1 posisi ke arah kanan 
+    public void move(){
+        if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position+1).equals("Z"))) {
+            //ubah GridField
+            grid.editGrid("", position);
+            position = nextPosition;
+            nextPosition = position + speed;
+            grid.editGrid(bulletType, position);
+
+            //ubah ArrayList
+            arr.set(position, this);
+            arr.set(position - speed, null);
+        }
+    }
+    public void attack(GridField grid, Zombie zombie) {
+        if (grid.getTextButton(position+1).equals("Z")) {
+            // {serang zombie}
+            // Menghilang setelah menyerang
+            grid.editGrid("", position);
+            arr.set(position, null);
+        }
     }
 }
