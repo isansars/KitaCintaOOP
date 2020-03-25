@@ -27,7 +27,8 @@ public class Player{
 
     // Method
     public void skip(){
-        this.giliran = 0;
+        this.giliran += 1;
+        System.out.println(giliran);
     }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;

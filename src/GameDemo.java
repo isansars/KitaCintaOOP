@@ -1,5 +1,6 @@
 //GameDemo.java
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GameDemo {
     public static void main(String[] args) {
@@ -14,33 +15,58 @@ public class GameDemo {
         }
         System.out.println(arr.size());
         Player p = new Player();
-        Zombie z1 = new ZombieA(1, x, arr);
+        Zombie z0 = new ZombieA(1, x, arr);
 
-        //testing command 1
-        System.out.print("Command: ");
-        String cmd = input.next();
-        if (cmd.equals("skip")) {
-            for (i = 0; i <= 59; i++) {
+        while (!x.gameOver()) {
+            if (p.getGiliran() % 5 == 0) {
+                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                Zombie z1 = new ZombieA(randomNum, x, arr);
+            }
+            else if (p.getGiliran() % 9 == 0) {
+                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                Zombie z2 = new ZombieB(randomNum, x, arr);
+            }
+            System.out.print("Command: ");
+            String cmd = input.next();
+            if (cmd.equals("SKIP")) {
                 p.skip();
-                if (arr.get(i) != null) {
-                    arr.get(i).move(x, arr);
+                for (i = 0; i <= 59; i++) {     
+                    if (arr.get(i) != null) {
+                        arr.get(i).move(x, arr);
+                    }
                 }
             }
         }
 
-        Zombie z2 = new ZombieA(1, x, arr);
-
-        //testing command 2
-        System.out.print("Command: ");
-        String cmd2 = input.next();
-        if (cmd.equals("skip")) {
-            for (i = 0; i <= 59; i++) {
-                p.skip();
-                if (arr.get(i) != null) {
-                    arr.get(i).move(x, arr);
-                }
-            }
+        if (x.gameOver()) {
+            System.out.println("Game Over");
         }
+
+        // //testing command 1
+        // System.out.print("Command: ");
+        // String cmd = input.next();
+        // if (cmd.equals("skip")) {
+        //     for (i = 0; i <= 59; i++) {
+        //         p.skip();
+        //         if (arr.get(i) != null) {
+        //             arr.get(i).move(x, arr);
+        //         }
+        //     }
+        // }
+
+        // Zombie z2 = new ZombieA(1, x, arr);
+
+        // //testing command 2
+        // System.out.print("Command: ");
+        // String cmd2 = input.next();
+        // if (cmd.equals("skip")) {
+        //     for (i = 0; i <= 59; i++) {
+        //         p.skip();
+        //         if (arr.get(i) != null) {
+        //             arr.get(i).move(x, arr);
+        //         }
+        //     }
+        // }
 
     }
 }
