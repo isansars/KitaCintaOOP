@@ -22,7 +22,7 @@ public abstract class Zombie{
         return damage;
     }
     //Konstruktor
-    public Zombie(int speed, int health, int damage, int ordinat, GridField grid, ArrayList<Zombie> arr) {
+    public Zombie(int speed, int health, int damage, int ordinat, GridField grid, EntityArray<Zombie> arr) {
         this.speed = speed;
         this.health = health;
         this.damage = damage;
@@ -41,10 +41,10 @@ public abstract class Zombie{
         this.nextPosition = position - speed;
 
         grid.editGrid("Z", this.position);
-        arr.set(position, this);
+        arr.add(this.position, this);
     }
     // Method
-    public void move(GridField grid, ArrayList<Zombie> arr) {
+    public void move(GridField grid, EntityArray<Zombie> arr) {
     //zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
     //zombie tidak bisa melompati plant
     //zombie dengan plant di depannya akan tertahan di posisinya
@@ -55,14 +55,14 @@ public abstract class Zombie{
             nextPosition = position - speed;
             grid.editGrid("Z", position);
 
-            //ubah ArrayList
-            arr.set(position, this);
-            arr.set(position + speed, null);
+            //ubah EntityArray
+            arr.add(position, this);
+            arr.delete(position + speed);
         }
     }
-    public void die(GridField grid, ArrayList<Zombie> arr) {
+    public void die(GridField grid, EntityArray<Zombie> arr) {
         grid.editGrid("", position);
-        arr.set(position, null);
+        arr.delete(position);
     }
     public void attack(GridField grid, Plant p) {
         if (grid.getTextButton(position-1).equals("P")) {

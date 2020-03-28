@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Bullet{
     // Atribut
     protected String bulletType;
@@ -7,7 +9,7 @@ public class Bullet{
     protected int speed;
 
     // Konstruktor
-    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, ArrayList<Bullet> arr){
+    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, EntityArray<Bullet> arr){
         this.bulletType     = bulletType;
         this.damage         = damage;
         this.speed          = speed;
@@ -50,7 +52,7 @@ public class Bullet{
     }
 
     // Method
-    public void move(){
+    public void move(GridField grid, EntityArray<Bullet> arr){
         if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position+1).equals("Z"))) {
             //ubah GridField
             grid.editGrid("", position);
@@ -60,15 +62,15 @@ public class Bullet{
 
             //ubah ArrayList
             arr.set(position, this);
-            arr.set(position - speed, null);
+            arr.delete(this);
         }
     }
-    public void attack(GridField grid, Zombie zombie) {
+    public void attack(GridField grid, EntityArray<Bullet> arr) {
         if (grid.getTextButton(position+1).equals("Z")) {
             // {serang zombie}
             // Menghilang setelah menyerang
             grid.editGrid("", position);
-            arr.set(position, null);
+            arr.delete(this);
         }
     }
 }

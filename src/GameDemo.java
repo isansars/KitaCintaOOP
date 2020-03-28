@@ -9,11 +9,12 @@ public class GameDemo {
 
         //instansiasi
         GridField x = new GridField();
-        ArrayList<Zombie> arr = new ArrayList<Zombie>(60);
-        for (i = 0; i <= 59; i ++) {
-            arr.add(null);
-        }
-        System.out.println(arr.size());
+        //ArrayList<Zombie> arr = new ArrayList<Zombie>(60);
+        EntityArray<Zombie> arr = new EntityArray<Zombie>();
+        // for (i = 0; i <= 59; i ++) {
+        //     arr.add(null);
+        // }
+        // System.out.println(arr.size());
         Player p = new Player();
         Zombie z0 = new ZombieA(1, x, arr);
 
@@ -30,9 +31,9 @@ public class GameDemo {
             String cmd = input.next();
             if (cmd.equals("SKIP")) {
                 p.skip();
-                for (i = 0; i <= 59; i++) {     
-                    if (arr.get(i) != null) {
-                        arr.get(i).move(x, arr);
+                for (i = 0; i <= 59 ; i++) {     
+                    if (arr.getEntity(i) != null) {
+                        arr.getEntity(i).move(x, arr);
                     }
                 }
             }
