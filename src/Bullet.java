@@ -9,8 +9,7 @@ public class Bullet{
     protected int speed;
 
     // Konstruktor
-    public Bullet(final String bulletType, final int damage, final int speed, final int plantPosition,
-            final GridField grid, final EntityArray<Bullet> arr) {
+    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, EntityArray<Bullet> arr) {
         this.bulletType = bulletType;
         this.damage = damage;
         this.speed = speed;
@@ -43,25 +42,27 @@ public class Bullet{
     }
 
     // Setter
-    public void setBulletType(final String bulletType) {
+    public void setBulletType(String bulletType) {
         this.bulletType = bulletType;
     }
 
-    public void setPosition(final int position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
-    public void setDamage(final int damage) {
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 
-    public void setSpeed(final int speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
     // Method
-    public void move(final GridField grid, final EntityArray<Bullet> arr) {
+    public void move(GridField grid, EntityArray<Bullet> arr) {
         if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position + 1).equals("Z"))) {
+            if (position == )
+
             // ubah GridField
             grid.editGrid("", position);
             position = nextPosition;
@@ -74,10 +75,10 @@ public class Bullet{
         }
     }
 
-    public void attack(final GridField grid, final EntityArray<Bullet> arrB, final EntityArray<Zombie> arrZ) {
+    public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (grid.getTextButton(position + 1).equals("Z")) {
             // serang zombie
-            final int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
+            int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
             arrZ.getEntity(position+1).setHealth(health);
             // Health Zombie = 0, die.
             if (arrZ.getEntity(position+1).getHealth() <= 0){
