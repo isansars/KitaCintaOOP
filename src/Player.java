@@ -31,12 +31,12 @@ public class Player{
         System.out.println(giliran);
         for (i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
-                arrZ.getEntity(i).move(x, arrZ);
-                arrZ.getEntity(i).attack(x, arrZ, arrP);
+                arrZ.getEntity(i).move(grid, arrZ);
+                arrZ.getEntity(i).attack(grid, arrZ, arrP);
             }
             if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(x, arrB);
-                arrB.getEntity(i).attack(x, arrB, arrP);
+                arrB.getEntity(i).move(grid, arrB);
+                arrB.getEntity(i).attack(grid, arrB, arrP);
             }
             if (arrP.getEntity(i) != null) {
                 int temp = arrP.getEntity(i).getTurn();
