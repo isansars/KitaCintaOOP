@@ -11,7 +11,7 @@ public abstract class Plant{
     public int getPosition(){
         return position;
     }
-    public char getPlantType(){
+    public String getPlantType(){
         return plantType;
     }
     public int getSunPoints(){
@@ -25,6 +25,11 @@ public abstract class Plant{
     }
     public int getAttFreq(){
         return attFreq;
+    }
+
+    //Setter
+    public void setHealth(int health) {
+        this.health = health;
     }
     
     // Konstruktor
@@ -40,6 +45,9 @@ public abstract class Plant{
     }
     
     // Method
-    public abstract void die(GridField grid, EntityArray<Plant> arr);
+    public void die(GridField grid, EntityArray<Plant> arr){
+        grid.editGrid("", position);
+        arr.delete(position);
+    }
     public abstract void shoot(GridField grid, EntityArray<Bullet> arr);
 }

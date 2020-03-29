@@ -7,10 +7,6 @@ public class PlantA extends Plant{
     }
 
     // Method
-    public void die(GridField grid, EntityArray<Plant> arr){
-        grid.editGrid("", position);
-        arr.delete(position);
-    }
     public void shoot(GridField grid, EntityArray<Bullet> arr){
         FireBul b = new FireBul(this.position+1,grid,arr);
         /*while(grid.getTextButton(b1.getNextPosition()).equals=""){

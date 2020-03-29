@@ -27,7 +27,7 @@ public class GridField{
         f.setLayout(new GridLayout(4,15));  
         //setting grid layout of 4 rows and 7 columns  
       
-        f.setSize(700,400);  
+        f.setSize(1000,400);  
         f.setVisible(true);  
     }
 
