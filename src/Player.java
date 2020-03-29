@@ -43,8 +43,8 @@ public class Player{
                 arrP.getEntity(i).setTurn(temp);
             }
             if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(grid, arrB);
                 arrB.getEntity(i).attack(grid, arrB, arrZ);
+                arrB.getEntity(i).move(grid, arrB);
             }
         }
     }
