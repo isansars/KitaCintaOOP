@@ -43,6 +43,6 @@ public class GridField{
     }
 
     public boolean gameOver() {
-        return ((getTextButton(0).equals("Z")) || (getTextButton(15).equals("Z")) || (getTextButton(30).equals("Z")) || (getTextButton(45).equals("Z")));
+        return ((getTextButton(0).equals("ZA")) || (getTextButton(15).equals("ZA")) || (getTextButton(30).equals("ZA")) || (getTextButton(45).equals("ZA")) || (getTextButton(0).equals("ZB")) || (getTextButton(15).equals("ZB")) || (getTextButton(30).equals("ZB")) || (getTextButton(45).equals("ZB")));
     }
 }  

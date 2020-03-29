@@ -39,7 +39,7 @@ public class Player{
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
             }
         } 
-        for (int i = 0; i <= 59; i ++) {
+        for (int i = 59; i >= 0; i --) {
             if (arrB.getEntity(i) != null) {
                 arrB.getEntity(i).move(grid, arrB);
             }

@@ -37,11 +37,11 @@ public class GameDemo {
             String cmd = input.next();
             if (cmd.equals("SKIP")) {
                 p.skip(arrZ, arrP, arrB, x);
-                for (i = 0; i <= 59; i ++) {
-                    if (arrB.getEntity(i) != null) {
-                        arrB.getEntity(i).move(x, arrB);
-                    }
-                }
+                // for (i = 0; i <= 59; i ++) {
+                //     if (arrB.getEntity(i) != null) {
+                //         arrB.getEntity(i).move(x, arrB);
+                //     }
+                // }
                 for (i = 0; i <= 59 ; i++){     
                     if (arrP.getEntity(i) != null) {
                         int temp = arrP.getEntity(i).getTurn();
