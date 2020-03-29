@@ -61,17 +61,20 @@ public class Bullet{
     // Method
     public void move(GridField grid, EntityArray<Bullet> arr) {
         if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position + 1).equals("Z"))) {
-            if (position == )
+            if ((position == 14) || (position == 29) || (position == 44) || (position == 59)){
+                grid.editGrid("", position);
+                arr.delete(position);
+            } else {
+                // ubah GridField
+                grid.editGrid("", position);
+                position = nextPosition;
+                nextPosition = position + speed;
+                grid.editGrid(bulletType, position);
 
-            // ubah GridField
-            grid.editGrid("", position);
-            position = nextPosition;
-            nextPosition = position + speed;
-            grid.editGrid(bulletType, position);
-
-            // ubah ArrayList
-            arr.add(position, this);
-            arr.delete(position - speed);
+                // ubah ArrayList
+                arr.add(position, this);
+                arr.delete(position - speed);
+            }
         }
     }
 
