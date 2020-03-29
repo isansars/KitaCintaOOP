@@ -13,7 +13,7 @@ public class GameDemo {
         //instansiasi
         GridField x = new GridField();
         //ArrayList<Zombie> arr = new ArrayList<Zombie>(60);
-        EntityArray<Zombie> arr = new EntityArray<Zombie>();
+        EntityArray<Zombie> arrZ = new EntityArray<Zombie>();
         EntityArray<Plant> arrP = new EntityArray<Plant>();
         EntityArray<Bullet> arrB = new EntityArray<Bullet>();
         // for (i = 0; i <= 59; i ++) {
@@ -21,7 +21,7 @@ public class GameDemo {
         // }
         // System.out.println(arr.size());
         Player p = new Player();
-        Zombie z0 = new ZombieA(1, x, arr);
+        Zombie z0 = new ZombieA(1, x, arrZ);
         Plant p1 = new PlantA(4, 1, x, arrP);
 
         while (!x.gameOver()) {
@@ -36,18 +36,7 @@ public class GameDemo {
             System.out.print("Command: ");
             String cmd = input.next();
             if (cmd.equals("SKIP")) {
-                p.skip(arr, arrP, arrB, x);
-                //semua looping di bawah ntar masukin ke method skip ajaa, jadi ga di gamedemo
-                for (i = 0; i <= 59 ; i++) {     
-                    if (arr.getEntity(i) != null) {
-                        arr.getEntity(i).move(x, arr);
-                    }
-                }
-                for (i = 0; i <= 59 ; i++) {     
-                    if (arr.getEntity(i) != null) {
-                        arr.getEntity(i).attack(x, arr, arrP);
-                    }
-                }
+                p.skip(arrZ, arrP, arrB, x);
             }
         }
 
