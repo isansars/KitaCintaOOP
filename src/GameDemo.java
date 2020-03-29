@@ -1,6 +1,9 @@
 //GameDemo.java
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.awt.*;  
+import java.awt.event.*;  
+import javax.swing.*;
 
 public class GameDemo {
     public static void main(String[] args) {

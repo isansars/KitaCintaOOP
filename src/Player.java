@@ -5,7 +5,7 @@ public class Player{
 
     // Konstruktor
     public Player(){
-        this.sunPoints  = 50; // ini mending initialnya berapa ya?
+        this.sunPoints  = 100; // ini mending initialnya berapa ya?
         this.giliran    = 1;
     }
 
@@ -33,7 +33,7 @@ public class Player{
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
     }
-    public void buyPlant(Plant plantType){
+    public void buyPlant(Plant plant, int position, EntityArray<Plant> arr, GridField grid){
         
     }
 }

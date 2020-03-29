@@ -4,7 +4,7 @@ public class PlantB extends Plant{
 
     //Konstruktor
     public PlantB(int baris, int kolom,GridField grid, EntityArray<Plant> arr){
-        super("PB", 60, 2, 1, "NormalBul", baris, kolom, grid, arr);
+        super("PB", 60, 50, 2, "FireBul", baris, kolom, grid, arr);
     }
 
     // Method
@@ -13,7 +13,7 @@ public class PlantB extends Plant{
         arr.delete(position);
     }
     public void shoot(GridField grid, EntityArray<Bullet> arr){
-        NormalBul b = new NormalBul(this.position+1, grid, arr);
+        FireBul b = new FireBul(this.position+1, grid, arr);
         /*while(grid.getTextButton(b1.getNextPosition()).equals=""){
             b1.move();
             b1.attack();

@@ -11,7 +11,7 @@ public abstract class Plant{
     public int getPosition(){
         return position;
     }
-    public char getPlantType(){
+    public String getPlantType(){
         return plantType;
     }
     public int getSunPoints(){
@@ -25,6 +25,14 @@ public abstract class Plant{
     }
     public int getAttFreq(){
         return attFreq;
+    }
+
+    // Setter
+    public void setPosition(int position){
+        this.position = position;
+    }
+    public void setHealth(int health){
+        this.health = health;
     }
     
     // Konstruktor
