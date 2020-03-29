@@ -79,7 +79,7 @@ public class Bullet{
     }
 
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
-        if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZA")) {
+        if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
             // serang zombie
             int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
             arrZ.getEntity(position+1).setHealth(health);

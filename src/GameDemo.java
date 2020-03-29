@@ -27,11 +27,11 @@ public class GameDemo {
         while (!x.gameOver()) {
             if (p.getGiliran() % 5 == 0) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                Zombie z1 = new ZombieA(randomNum, x, arr);
+                Zombie z1 = new ZombieA(randomNum, x, arrZ);
             }
             else if (p.getGiliran() % 9 == 0) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                Zombie z2 = new ZombieB(randomNum, x, arr);
+                Zombie z2 = new ZombieB(randomNum, x, arrZ);
             }
             System.out.print("Command: ");
             String cmd = input.next();

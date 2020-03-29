@@ -29,14 +29,10 @@ public class Player{
     public void skip(EntityArray<Zombie> arrZ, EntityArray<Plant> arrP, EntityArray<Bullet> arrB, GridField grid){
         this.giliran += 1;
         System.out.println(giliran);
-        for (i = 0; i <= 59 ; i++) {     
+        for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).move(grid, arrZ);
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
-            }
-            if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(grid, arrB);
-                arrB.getEntity(i).attack(grid, arrB, arrP);
             }
             if (arrP.getEntity(i) != null) {
                 int temp = arrP.getEntity(i).getTurn();
@@ -45,6 +41,10 @@ public class Player{
                 }
                 temp--;
                 arrP.getEntity(i).setTurn(temp);
+            }
+            if (arrB.getEntity(i) != null) {
+                arrB.getEntity(i).move(grid, arrB);
+                arrB.getEntity(i).attack(grid, arrB, arrZ);
             }
         }
     }
