@@ -17,7 +17,7 @@ public class Bullet{
         this.nextPosition = plantPosition + 1 + speed;
 
         grid.editGrid(bulletType, this.position);
-        arr.set(position, this);
+        arr.add(this.position, this);
     }
 
     // Getter

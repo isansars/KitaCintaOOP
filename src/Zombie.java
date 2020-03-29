@@ -82,10 +82,17 @@ public abstract class Zombie{
         grid.editGrid("", position);
         arr.delete(position);
     }
-    public void attack(GridField grid, Plant p) {
+    public void attack(GridField grid, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
         if (grid.getTextButton(position-1).equals("P")) {
-            //serang plant
-            
+            //serang 
+            while (!(arrP.getEntity(position-1).getHealth() <= 0)){
+                int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
+                arrP.getEntity(position-1).setHealth(health);
+            }
+            // Health Plant = 0, die.
+            if (arrP.getEntity(position-1).getHealth() <= 0){
+                arrP.getEntity(position-1).die(grid, arrP);
+            }
         }
     }
 }
