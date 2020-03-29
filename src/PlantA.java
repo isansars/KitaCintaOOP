@@ -8,7 +8,7 @@ public class PlantA extends Plant{
 
     // Method
     public void shoot(GridField grid, EntityArray<Bullet> arr){
-        NormalBul b = new NormalBul(this.position+1,grid,arr);
+        NormalBul b = new NormalBul(this.position,grid,arr);
         /*while(grid.getTextButton(b1.getNextPosition()).equals=""){
             b1.move();
             b1.attack();

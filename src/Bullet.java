@@ -9,14 +9,14 @@ public class Bullet{
     protected int speed;
 
     // Konstruktor
-    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, EntityArray<Bullet> arr) {
+    public Bullet(String bulletType, int damage, int speed, int position, GridField grid, EntityArray<Bullet> arr) {
         this.bulletType = bulletType;
         this.damage = damage;
         this.speed = speed;
-        this.position = plantPosition + 1;
-        this.nextPosition = plantPosition + 1 + speed;
+        this.position = position + 1;
+        this.nextPosition = position + 1 + speed;
 
-        grid.editGrid(bulletType, this.position);
+        grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
     }
 
@@ -24,19 +24,15 @@ public class Bullet{
     public String getBulletType() {
         return bulletType;
     }
-
     public int getPosition() {
         return position;
     }
-
     public int getNextPosition() {
         return nextPosition;
     }
-
     public int getDamage() {
         return damage;
     }
-
     public int getSpeed() {
         return speed;
     }
@@ -45,15 +41,12 @@ public class Bullet{
     public void setBulletType(String bulletType) {
         this.bulletType = bulletType;
     }
-
     public void setPosition(int position) {
         this.position = position;
     }
-
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
     public void setSpeed(int speed) {
         this.speed = speed;
     }
@@ -67,6 +60,7 @@ public class Bullet{
             } else {
                 // ubah GridField
                 grid.editGrid("", position);
+                System.out.println(position);
                 position = nextPosition;
                 nextPosition = position + speed;
                 grid.editGrid(bulletType, position);
@@ -77,7 +71,6 @@ public class Bullet{
             }
         }
     }
-
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
             // serang zombie

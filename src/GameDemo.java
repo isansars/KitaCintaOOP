@@ -22,7 +22,7 @@ public class GameDemo {
         // System.out.println(arr.size());
         Player p = new Player();
         Zombie z0 = new ZombieA(1, x, arrZ);
-        Plant p1 = new PlantA(4, 1, x, arrP);
+        PlantA p1 = new PlantA(2, 2, x, arrP);
 
         while (!x.gameOver()) {
             if (p.getGiliran() % 5 == 0) {
@@ -37,6 +37,30 @@ public class GameDemo {
             String cmd = input.next();
             if (cmd.equals("SKIP")) {
                 p.skip(arrZ, arrP, arrB, x);
+                for (i = 0; i <= 59; i ++) {
+                    if (arrB.getEntity(i) != null) {
+                        arrB.getEntity(i).move(x, arrB);
+                    }
+                }
+                for (i = 0; i <= 59 ; i++){     
+                    if (arrP.getEntity(i) != null) {
+                        int temp = arrP.getEntity(i).getTurn();
+                        if (arrP.getEntity(i).getAttFreq() == temp){
+                            arrP.getEntity(i).shoot(x, arrB);
+                            System.out.println("shoot");
+                        }
+                        temp--;
+                        arrP.getEntity(i).setTurn(temp);
+                        if (arrP.getEntity(i).getTurn() == 0){
+                            arrP.getEntity(i).setTurn(arrP.getEntity(i).getAttFreq());
+                        }
+                    }
+                }
+                for (i = 0; i <= 59; i ++) {
+                    if (arrB.getEntity(i) != null) {
+                        arrB.getEntity(i).attack(x, arrB, arrZ);
+                    }
+                }
             }
         }
 

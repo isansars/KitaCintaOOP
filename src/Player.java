@@ -32,19 +32,21 @@ public class Player{
         for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).move(grid, arrZ);
+            }
+        }
+        for (int i = 0; i <= 59 ; i++) {     
+            if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
             }
-            if (arrP.getEntity(i) != null) {
-                int temp = arrP.getEntity(i).getTurn();
-                if (arrP.getEntity(i).getAttFreq() == temp){
-                    arrP.getEntity(i).shoot(grid, arrB);
-                }
-                temp--;
-                arrP.getEntity(i).setTurn(temp);
+        } 
+        for (int i = 0; i <= 59; i ++) {
+            if (arrB.getEntity(i) != null) {
+                arrB.getEntity(i).move(grid, arrB);
             }
+        }
+        for (int i = 0; i <= 59; i ++) {
             if (arrB.getEntity(i) != null) {
                 arrB.getEntity(i).attack(grid, arrB, arrZ);
-                arrB.getEntity(i).move(grid, arrB);
             }
         }
     }

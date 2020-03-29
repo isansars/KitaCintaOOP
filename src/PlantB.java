@@ -8,7 +8,7 @@ public class PlantB extends Plant{
 
     // Method
     public void shoot(GridField grid, EntityArray<Bullet> arr){
-        FireBul b = new FireBul(this.position+1, grid, arr);
+        FireBul b = new FireBul(this.position, grid, arr);
         /*while(grid.getTextButton(b1.getNextPosition()).equals=""){
             b1.move();
             b1.attack();

@@ -73,7 +73,7 @@ public abstract class Zombie{
             grid.editGrid("", position);
             position = nextPosition;
             nextPosition = position - speed;
-            grid.editGrid("Z", position);
+            grid.editGrid(this.type, position);
 
             //ubah EntityArray
             arr.add(position, this);
