@@ -33,4 +33,7 @@ public class Player{
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
     }
+    public void buyPlant(Plant plantType){
+        
+    }
 }
