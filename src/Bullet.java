@@ -14,7 +14,7 @@ public class Bullet{
         this.damage = damage;
         this.speed = speed;
         this.position = position + 1;
-        this.nextPosition = position + 1 + speed;
+        this.nextPosition = position + speed + 1;
 
         grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
