@@ -9,68 +9,79 @@ public class Bullet{
     protected int speed;
 
     // Konstruktor
-    public Bullet(String bulletType, int damage, int speed, int plantPosition, GridField grid, EntityArray<Bullet> arr){
-        this.bulletType     = bulletType;
-        this.damage         = damage;
-        this.speed          = speed;
-        this.position       = plantPosition + 1;
-        this.nextPosition   = plantPosition + 1 + speed;
+    public Bullet(final String bulletType, final int damage, final int speed, final int plantPosition,
+            final GridField grid, final EntityArray<Bullet> arr) {
+        this.bulletType = bulletType;
+        this.damage = damage;
+        this.speed = speed;
+        this.position = plantPosition + 1;
+        this.nextPosition = plantPosition + 1 + speed;
 
         grid.editGrid(bulletType, this.position);
         arr.set(position, this);
     }
 
     // Getter
-    public String getBulletType(){
+    public String getBulletType() {
         return bulletType;
     }
-    public int getPosition(){
+
+    public int getPosition() {
         return position;
     }
+
     public int getNextPosition() {
         return nextPosition;
     }
-    public int getDamage(){
+
+    public int getDamage() {
         return damage;
     }
-    public int getSpeed(){
+
+    public int getSpeed() {
         return speed;
     }
 
     // Setter
-    public void setBulletType(String bulletType){
+    public void setBulletType(final String bulletType) {
         this.bulletType = bulletType;
     }
-    public void setPosition(int position){
+
+    public void setPosition(final int position) {
         this.position = position;
     }
-    public void setDamage(int damage){
+
+    public void setDamage(final int damage) {
         this.damage = damage;
     }
-    public void setSpeed(int speed){
+
+    public void setSpeed(final int speed) {
         this.speed = speed;
     }
 
     // Method
-    public void move(GridField grid, EntityArray<Bullet> arr){
-        if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position+1).equals("Z"))) {
-            //ubah GridField
+    public void move(final GridField grid, final EntityArray<Bullet> arr) {
+        if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position + 1).equals("Z"))) {
+            // ubah GridField
             grid.editGrid("", position);
             position = nextPosition;
             nextPosition = position + speed;
             grid.editGrid(bulletType, position);
 
-            //ubah ArrayList
-            arr.set(position, this);
-            arr.delete(this);
+            // ubah ArrayList
+            arr.add(position, this);
+            arr.delete(position - speed);
         }
     }
-    public void attack(GridField grid, EntityArray<Bullet> arr) {
-        if (grid.getTextButton(position+1).equals("Z")) {
+
+    public void attack(final GridField grid, final EntityArray<Bullet> arrB, final EntityArray<Zombie> arrZ) {
+        if (grid.getTextButton(position + 1).equals("Z")) {
             // {serang zombie}
+            final int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
+            arrZ.getEntity(position+1).setHealth(health);
             // Menghilang setelah menyerang
             grid.editGrid("", position);
-            arr.delete(this);
+            arrB.delete(position);
         }
     }
 }

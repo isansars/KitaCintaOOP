@@ -8,7 +8,7 @@ public abstract class Zombie{
     protected int health;
     protected int damage;
 
-    //getter
+    // Getter
     public int getPosition() {
         return position;
     }
@@ -21,7 +21,25 @@ public abstract class Zombie{
     public int getDamage() {
         return damage;
     }
-    //Konstruktor
+
+    // Setter
+    public void setPosition(int position){
+        this.position = position;
+    }
+    public void setNextPos(int nextPosition){
+        this.nextPosition = nextPosition;
+    }
+    public void setSpeed(int speed){
+        this.speed = speed;
+    }
+    public void setHealth(int health){
+        this.health = health;
+    }
+    public void setDamage(int damage){
+        this.damage = damage;
+    }
+
+    // Konstruktor
     public Zombie(int speed, int health, int damage, int ordinat, GridField grid, EntityArray<Zombie> arr) {
         this.speed = speed;
         this.health = health;
@@ -67,6 +85,7 @@ public abstract class Zombie{
     public void attack(GridField grid, Plant p) {
         if (grid.getTextButton(position-1).equals("P")) {
             //serang plant
+            
         }
     }
 }
