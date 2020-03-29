@@ -26,7 +26,7 @@ public class Player{
     }
 
     // Method
-    public void skip(){
+    public void skip(EntityArray<Zombie> arrZ, EntityArray<Plant> arrP, EntityArray<Bullet> arrB, GridField grid){
         this.giliran += 1;
         System.out.println(giliran);
     }

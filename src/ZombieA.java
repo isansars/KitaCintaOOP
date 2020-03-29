@@ -4,8 +4,6 @@ public class ZombieA extends Zombie {
     //turunan Zombie dengan speed = 1, health = 10, damage = 2
 
     public ZombieA(int ordinat, GridField grid, EntityArray<Zombie> arr) {
-        super(1, 10, 2, ordinat, grid, arr);
-        grid.editGrid("ZA", this.position);
-        arr.add(this.position, this);
+        super(1, "ZA", 50, 10, ordinat, grid, arr);
     }
 }

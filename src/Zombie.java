@@ -3,6 +3,7 @@ import java.util.*;
 public abstract class Zombie{
     // Atribut
     protected int position;
+    protected String type;
     protected int nextPosition;
     protected int speed;
     protected int health;
@@ -40,8 +41,9 @@ public abstract class Zombie{
     }
 
     // Konstruktor
-    public Zombie(int speed, int health, int damage, int ordinat, GridField grid, EntityArray<Zombie> arr) {
+    public Zombie(int speed, String type, int health, int damage, int ordinat, GridField grid, EntityArray<Zombie> arr) {
         this.speed = speed;
+        this.type = type;
         this.health = health;
         this.damage = damage;
         if (ordinat == 1) {
@@ -58,7 +60,7 @@ public abstract class Zombie{
         }
         this.nextPosition = position - speed;
 
-        grid.editGrid("Z", this.position);
+        grid.editGrid(this.type, this.position);
         arr.add(this.position, this);
     }
     // Method
@@ -83,11 +85,12 @@ public abstract class Zombie{
         arr.delete(position);
     }
     public void attack(GridField grid, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
-        if (grid.getTextButton(position-1).equals("P")) {
+        if (arrP.getEntity(position - 1) != null) {
             //serang 
-            int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
-            arrP.getEntity(position-1).setHealth(health);
-            
+            if (arrP.getEntity(position-1).getHealth() > 0){
+                int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
+                arrP.getEntity(position-1).setHealth(health);
+            }
             // Health Plant = 0, die.
             if (arrP.getEntity(position-1).getHealth() <= 0){
                 arrP.getEntity(position-1).die(grid, arrP);

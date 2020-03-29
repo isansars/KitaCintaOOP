@@ -6,6 +6,7 @@ public abstract class Plant{
     protected int health;
     protected String bulletType;
     protected int attFreq;
+    protected int turn;
     
     //Getter
     public int getPosition(){
@@ -26,6 +27,9 @@ public abstract class Plant{
     public int getAttFreq(){
         return attFreq;
     }
+    public int getTurn(){
+        return turn;
+    }
 
     // Setter
     public void setPosition(int position){
@@ -34,6 +38,9 @@ public abstract class Plant{
     public void setHealth(int health){
         this.health = health;
     }
+    public void setTurn(int turn){
+        this.turn = turn;
+    }
     
     // Konstruktor
     public Plant(String plantType, int health, int sunPoints, int attFreq, String bulletType, int baris, int kolom, GridField grid, EntityArray<Plant> arr) {
@@ -41,6 +48,7 @@ public abstract class Plant{
         this.health     = health;
         this.sunPoints  = sunPoints;
         this.attFreq    = attFreq;
+        this.turn       = attFreq;
         this.bulletType = bulletType;
         this.position   = (kolom+((baris-1)*15)-1);
         grid.editGrid(plantType, this.position);
@@ -48,6 +56,9 @@ public abstract class Plant{
     }
     
     // Method
-    public abstract void die(GridField grid, EntityArray<Plant> arr);
+    public void die(GridField grid, EntityArray<Plant> arr){
+        grid.editGrid("", position);
+        arr.delete(position);
+    }
     public abstract void shoot(GridField grid, EntityArray<Bullet> arr);
 }
