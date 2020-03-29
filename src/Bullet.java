@@ -76,9 +76,13 @@ public class Bullet{
 
     public void attack(final GridField grid, final EntityArray<Bullet> arrB, final EntityArray<Zombie> arrZ) {
         if (grid.getTextButton(position + 1).equals("Z")) {
-            // {serang zombie}
+            // serang zombie
             final int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
             arrZ.getEntity(position+1).setHealth(health);
+            // Health Zombie = 0, die.
+            if (arrZ.getEntity(position+1).getHealth() <= 0){
+                arrZ.getEntity(position+1).die(grid, arrZ);
+            }
             // Menghilang setelah menyerang
             grid.editGrid("", position);
             arrB.delete(position);
