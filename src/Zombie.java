@@ -68,16 +68,38 @@ public abstract class Zombie{
     //zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
     //zombie tidak bisa melompati plant
     //zombie dengan plant di depannya akan tertahan di posisinya
-        if ((grid.getTextButton(nextPosition).equals("")) && ((!grid.getTextButton(position-1).equals("PA")) || (!grid.getTextButton(position-1).equals("PB")))) {
-            //ubah GridField
-            grid.editGrid("", position);
-            position = nextPosition;
-            nextPosition = position - speed;
-            grid.editGrid(this.type, position);
+        if ((!grid.getTextButton(position-1).equals("PA")) || (!grid.getTextButton(position-1).equals("PB"))) {
+            if (grid.getTextButton(nextPosition).equals("")){
+                //ubah GridField
+                grid.editGrid("", position);
+                position = nextPosition;
+                nextPosition = position - speed;
+                grid.editGrid(this.type, position);
 
-            //ubah EntityArray
-            arr.add(position, this);
-            arr.delete(position + speed);
+                //ubah EntityArray
+                arr.add(position, this);
+                arr.delete(position + speed);
+            } else if(grid.getTextButton(nextPosition).equals("PA") || grid.getTextButton(nextPosition).equals("PB")){
+                //ubah GridField
+                grid.editGrid("", position);
+                position = nextPosition + 1;
+                nextPosition = position - speed;
+                grid.editGrid(this.type, position);
+
+                //ubah EntityArray
+                arr.add(position, this);
+                arr.delete(position + speed);
+            } else if(grid.getTextButton(nextPosition).equals("ZA") || grid.getTextButton(nextPosition).equals("ZB")){
+                //ubah GridField
+                grid.editGrid("", position);
+                position = nextPosition - 1;
+                nextPosition = position - speed;
+                grid.editGrid(this.type, position);
+
+                //ubah EntityArray
+                arr.add(position, this);
+                arr.delete(position + speed);
+            } 
         }
     }
     public void die(GridField grid, EntityArray<Zombie> arr) {

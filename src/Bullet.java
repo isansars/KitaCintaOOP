@@ -21,7 +21,7 @@ public class Bullet{
             }
         }
         this.position = temp;
-        this.nextPosition = temp + speed;
+        this.nextPosition = temp + this.speed;
 
         grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
@@ -69,9 +69,8 @@ public class Bullet{
                 //mengecek di antara position dengan nextPosition ada zombie atau tidak
                 // ubah GridField
                 grid.editGrid("", position);
-                System.out.println(position);
                 position = nextPosition;
-                nextPosition = position + speed;
+                nextPosition = position + this.speed;
                 grid.editGrid(bulletType, position);
     
                 // ubah ArrayList
