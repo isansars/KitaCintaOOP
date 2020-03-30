@@ -13,8 +13,15 @@ public class Bullet{
         this.bulletType = bulletType;
         this.damage = damage;
         this.speed = speed;
-        this.position = position + 1;
-        this.nextPosition = position + speed + 1;
+
+        int temp = position + 1;
+        if (!grid.getTextButton(temp).equals("")) {
+            while (!grid.getTextButton(temp).equals("")) {
+                temp ++;
+            }
+        }
+        this.position = temp;
+        this.nextPosition = temp + speed;
 
         grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);

@@ -7,7 +7,7 @@ public class PlantB extends Plant{
     }
 
     // Method
-    public void shoot(GridField grid, EntityArray<Bullet> arr){
+    public void shoot(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ){
         FireBul b = new FireBul(this.position, grid, arr);
         /*while(grid.getTextButton(b1.getNextPosition()).equals=""){
             b1.move();

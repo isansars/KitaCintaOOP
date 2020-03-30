@@ -60,5 +60,5 @@ public abstract class Plant{
         grid.editGrid("", position);
         arr.delete(position);
     }
-    public abstract void shoot(GridField grid, EntityArray<Bullet> arr);
+    public abstract void shoot(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ);
 }

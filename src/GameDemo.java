@@ -22,7 +22,7 @@ public class GameDemo {
         // System.out.println(arr.size());
         Player p = new Player();
         Zombie z0 = new ZombieA(1, x, arrZ);
-        Plant p1 = new PlantA(2, 2, x, arrP);
+        Plant p1 = new PlantA(4, 1, x, arrP);
 
         while (!x.gameOver()) {
             if (p.getGiliran() % 5 == 0) {
@@ -43,23 +43,23 @@ public class GameDemo {
                 //     }
                 // }
                 for (i = 0; i <= 59 ; i++){     
-                    if (arrP.getEntity(i) != null) {
-                        temp = arrP.getEntity(i).getTurn();
-                        pos = arrP.getEntity(i).getPosition();
-                        if (arrP.getEntity(i).getAttFreq() == temp){
-                            if (arrP.getEntity(i) instanceof PlantA){
-                                Bullet b1 = new NormalBul(pos, x, arrB);
-                            } else if(arrP.getEntity(i) instanceof PlantB){
-                                Bullet b2 = new FireBul(pos, x, arrB);
-                            }
-                            System.out.println("shoot");
-                        }
-                        temp--;
-                        arrP.getEntity(i).setTurn(temp);
-                        if (arrP.getEntity(i).getTurn() == 0){
-                            arrP.getEntity(i).setTurn(arrP.getEntity(i).getAttFreq());
-                        }
-                    }
+                    // if (arrP.getEntity(i) != null) {
+                    //     temp = arrP.getEntity(i).getTurn();
+                    //     pos = arrP.getEntity(i).getPosition();
+                    //     if (arrP.getEntity(i).getAttFreq() == temp){
+                    //         if (arrP.getEntity(i) instanceof PlantA){
+                    //             Bullet b1 = new NormalBul(pos, x, arrB);
+                    //         } else if(arrP.getEntity(i) instanceof PlantB){
+                    //             Bullet b2 = new FireBul(pos, x, arrB);
+                    //         }
+                    //         System.out.println("shoot");
+                    //     }
+                    //     temp--;
+                    //     arrP.getEntity(i).setTurn(temp);
+                    //     if (arrP.getEntity(i).getTurn() == 0){
+                    //         arrP.getEntity(i).setTurn(arrP.getEntity(i).getAttFreq());
+                    //     }
+                    // }
                 }
                 for (i = 0; i <= 59; i ++) {
                     if (arrB.getEntity(i) != null) {

@@ -29,11 +29,28 @@ public class Player{
     public void skip(EntityArray<Zombie> arrZ, EntityArray<Plant> arrP, EntityArray<Bullet> arrB, GridField grid){
         this.giliran += 1;
         System.out.println(giliran);
+        //prioritas 1 : bullet
+        for (int i = 0; i <= 59; i ++) {
+            if (arrB.getEntity(i) != null) {
+                arrB.getEntity(i).attack(grid, arrB, arrZ);
+            }
+        }
         for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).move(grid, arrZ);
             }
         }
+
+        //prioritas 2 : plant shoot
+        for (int i = 0; i <= 59; i ++) {
+            if (arrP.getEntity(i) != null) {
+                if (giliran % arrP.getEntity(i).getAttFreq() == 0) {
+                    arrP.getEntity(i).shoot(grid, arrB, arrZ);
+                }
+            }
+        }
+
+        //prioritas 3 : zombie
         for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
@@ -42,11 +59,6 @@ public class Player{
         for (int i = 59; i >= 0; i --) {
             if (arrB.getEntity(i) != null) {
                 arrB.getEntity(i).move(grid, arrB);
-            }
-        }
-        for (int i = 0; i <= 59; i ++) {
-            if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).attack(grid, arrB, arrZ);
             }
         }
     }

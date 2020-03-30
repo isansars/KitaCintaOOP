@@ -68,7 +68,7 @@ public abstract class Zombie{
     //zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
     //zombie tidak bisa melompati plant
     //zombie dengan plant di depannya akan tertahan di posisinya
-        if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position-1).equals("P"))) {
+        if ((grid.getTextButton(nextPosition).equals("")) && ((!grid.getTextButton(position-1).equals("PA")) || (!grid.getTextButton(position-1).equals("PB")))) {
             //ubah GridField
             grid.editGrid("", position);
             position = nextPosition;
@@ -85,15 +85,17 @@ public abstract class Zombie{
         arr.delete(position);
     }
     public void attack(GridField grid, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
-        if (arrP.getEntity(position - 1) != null) {
-            //serang 
-            if (arrP.getEntity(position-1).getHealth() > 0){
-                int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
-                arrP.getEntity(position-1).setHealth(health);
-            }
-            // Health Plant = 0, die.
-            if (arrP.getEntity(position-1).getHealth() <= 0){
-                arrP.getEntity(position-1).die(grid, arrP);
+        if (position != 0) {
+            if (arrP.getEntity(position - 1) != null) {
+                //serang 
+                if (arrP.getEntity(position-1).getHealth() > 0){
+                    int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
+                    arrP.getEntity(position-1).setHealth(health);
+                }
+                // Health Plant = 0, die.
+                if (arrP.getEntity(position-1).getHealth() <= 0){
+                    arrP.getEntity(position-1).die(grid, arrP);
+                }
             }
         }
     }
