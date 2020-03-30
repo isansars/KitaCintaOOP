@@ -81,16 +81,25 @@ public class Player{
         System.out.print("Masukkan column tanaman: ");
         int column = input.nextInt();
         if (row >= 1 && row <= 4 && column >= 1 && column <= 15) {
-            if (read.equals("1")) {
-                Plant pnew = new PlantA(row, column, grid, arrP);
-                sunPoints -= pnew.getSunPoints();
-            }
-            else if (read.equals("2")) {
-                Plant pnew = new PlantB(row, column, grid, arrP);
-                sunPoints -= pnew.getSunPoints();
-            }
-            else {
-                System.out.println("Input Anda tidak valid");
+            // Cek petak
+            int pos = (column+((row-1)*15)-1);
+            boolean check;
+            if (!(grid.getTextButton(pos).equals(""))){
+                System.out.println("Petak telah terisi.");
+            } else{
+                if (read.equals("1")) {
+                    Plant pnew = new PlantA(row, column, grid, arrP);
+                    sunPoints -= pnew.getSunPoints();
+                    System.out.println("Pembelian berhasil");
+                }
+                else if (read.equals("2")) {
+                    Plant pnew = new PlantB(row, column, grid, arrP);
+                    sunPoints -= pnew.getSunPoints();
+                    System.out.println("Pembelian berhasil");
+                }
+                else {
+                    System.out.println("Input Anda tidak valid");
+                }
             }
         }
         else {
@@ -99,5 +108,12 @@ public class Player{
     }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
+    }
+    public boolean check(GridField grid, int position){
+        if (!(grid.getTextButton(position).equals(""))){
+            return false;
+        } else{
+            return true;
+        }
     }
 }
