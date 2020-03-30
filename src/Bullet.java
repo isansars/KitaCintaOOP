@@ -14,7 +14,7 @@ public class Bullet{
         this.damage = damage;
         this.speed = speed;
 
-        int temp = position + 1;
+        int temp = position;
         if (!grid.getTextButton(temp).equals("")) {
             while (!grid.getTextButton(temp).equals("")) {
                 temp ++;

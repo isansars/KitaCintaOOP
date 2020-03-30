@@ -3,11 +3,11 @@ import java.util.*;
 public class Player{
     // Atribut
     protected static int sunPoints;
-    protected static int giliran; //  ini mending int apa boolean?
+    protected static int giliran; 
 
     // Konstruktor
     public Player(){
-        this.sunPoints  = 100; // ini mending initialnya berapa ya?
+        this.sunPoints  = 100; 
         this.giliran    = 1;
     }
 
@@ -33,9 +33,9 @@ public class Player{
         sunPoints += 25;
         System.out.println(giliran);
         //prioritas 1 : bullet
-        for (int i = 0; i <= 59 ; i++) {     
-            if (arrZ.getEntity(i) != null) {
-                arrZ.getEntity(i).move(grid, arrZ);
+        for (int i = 59; i >= 0; i --) {
+            if (arrB.getEntity(i) != null) {
+                arrB.getEntity(i).move(grid, arrB);
             }
         }
         for (int i = 0; i <= 59; i ++) {
@@ -54,9 +54,9 @@ public class Player{
         }
 
         //prioritas 3 : zombie
-        for (int i = 59; i >= 0; i --) {
-            if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(grid, arrB);
+        for (int i = 0; i <= 59 ; i++) {     
+            if (arrZ.getEntity(i) != null) {
+                arrZ.getEntity(i).move(grid, arrZ);
             }
         }
         for (int i = 0; i <= 59 ; i++) {     
@@ -83,11 +83,11 @@ public class Player{
         if (row >= 1 && row <= 4 && column >= 1 && column <= 15) {
             if (read.equals("1")) {
                 Plant pnew = new PlantA(row, column, grid, arrP);
-                sunPoints -= 25;
+                sunPoints -= pnew.getSunPoints();
             }
             else if (read.equals("2")) {
                 Plant pnew = new PlantB(row, column, grid, arrP);
-                sunPoints -= 50;
+                sunPoints -= pnew.getSunPoints();
             }
             else {
                 System.out.println("Input Anda tidak valid");
@@ -99,8 +99,5 @@ public class Player{
     }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
-    }
-    public void buyPlant(Plant plant, int position, EntityArray<Plant> arr, GridField grid){
-        
     }
 }

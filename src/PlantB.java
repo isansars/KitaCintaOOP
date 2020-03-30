@@ -3,7 +3,7 @@ public class PlantB extends Plant{
 
     //Konstruktor
     public PlantB(int baris, int kolom,GridField grid, EntityArray<Plant> arr){
-        super("PB", 60, 30, 2, "FireBul", baris, kolom, grid, arr);
+        super("PB", 60, 50, 2, "FireBul", baris, kolom, grid, arr);
     }
 
     // Method
