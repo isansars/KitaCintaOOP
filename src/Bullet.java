@@ -79,6 +79,10 @@ public class Bullet{
                 arr.delete(position - speed);
             }
         }
+        else {
+            grid.editGrid("", position);
+            arr.delete(position);
+        }
     }
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (!isOutRange()) {
