@@ -60,18 +60,20 @@ public class Bullet{
 
     // Method
     public void move(GridField grid, EntityArray<Bullet> arr) {
-        if ((grid.getTextButton(nextPosition).equals("")) && (!grid.getTextButton(position + 1).equals("Z"))) {
+        if (!isOutRange()) {
             if ((position == 14) || (position == 29) || (position == 44) || (position == 59)){
                 grid.editGrid("", position);
                 arr.delete(position);
-            } else {
+            }
+            else if ((grid.getTextButton(nextPosition).equals(""))) {
+                //mengecek di antara position dengan nextPosition ada zombie atau tidak
                 // ubah GridField
                 grid.editGrid("", position);
                 System.out.println(position);
                 position = nextPosition;
                 nextPosition = position + speed;
                 grid.editGrid(bulletType, position);
-
+    
                 // ubah ArrayList
                 arr.add(position, this);
                 arr.delete(position - speed);
@@ -79,17 +81,34 @@ public class Bullet{
         }
     }
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
-        if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
-            // serang zombie
-            int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
-            arrZ.getEntity(position+1).setHealth(health);
-            // Health Zombie = 0, die.
-            if (arrZ.getEntity(position+1).getHealth() <= 0){
-                arrZ.getEntity(position+1).die(grid, arrZ);
+        if (!isOutRange()) {
+            if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
+                // serang zombie
+                int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
+                arrZ.getEntity(position+1).setHealth(health);
+                // Health Zombie = 0, die.
+                if (arrZ.getEntity(position+1).getHealth() <= 0){
+                    arrZ.getEntity(position+1).die(grid, arrZ);
+                }
+                // Menghilang setelah menyerang
+                grid.editGrid("", position);
+                arrB.delete(position);
             }
-            // Menghilang setelah menyerang
-            grid.editGrid("", position);
-            arrB.delete(position);
+        }
+    }
+
+    boolean isOutRange() {
+        if (position < 15) {
+            return (nextPosition >= 15);
+        }
+        else if (position < 30) {
+            return (nextPosition >= 30);
+        }
+        else if (position < 45) {
+            return (nextPosition >= 45);
+        }
+        else {
+            return (nextPosition > 59);
         }
     }
 }

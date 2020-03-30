@@ -30,14 +30,14 @@ public class Player{
         this.giliran += 1;
         System.out.println(giliran);
         //prioritas 1 : bullet
-        for (int i = 0; i <= 59; i ++) {
-            if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).attack(grid, arrB, arrZ);
-            }
-        }
         for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).move(grid, arrZ);
+            }
+        }
+        for (int i = 0; i <= 59; i ++) {
+            if (arrB.getEntity(i) != null) {
+                arrB.getEntity(i).attack(grid, arrB, arrZ);
             }
         }
 
