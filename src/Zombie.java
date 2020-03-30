@@ -68,7 +68,7 @@ public abstract class Zombie{
     //zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
     //zombie tidak bisa melompati plant
     //zombie dengan plant di depannya akan tertahan di posisinya
-        if ((!grid.getTextButton(position-1).equals("PA")) || (!grid.getTextButton(position-1).equals("PB"))) {
+        if ((!grid.getTextButton(position-1).equals("PA")) && (!grid.getTextButton(position-1).equals("PB"))) {
             if (grid.getTextButton(nextPosition).equals("")){
                 //ubah GridField
                 grid.editGrid("", position);
