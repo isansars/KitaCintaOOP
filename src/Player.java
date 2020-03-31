@@ -93,7 +93,6 @@ public class Player{
             if (row >= 1 && row <= 4 && column >= 1 && column <= 15) {
                 // Cek petak
                 int pos = (column+((row-1)*15)-1);
-                boolean check;
                 if (!(grid.getTextButton(pos).equals(""))){
                     System.out.println("Petak telah terisi.");
                 } else{
@@ -119,12 +118,5 @@ public class Player{
     }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
-    }
-    public boolean check(GridField grid, int position){
-        if (!(grid.getTextButton(position).equals(""))){
-            return false;
-        } else{
-            return true;
-        }
     }
 }
