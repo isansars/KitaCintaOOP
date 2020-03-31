@@ -23,23 +23,18 @@ public class GameDemo {
             System.out.println(p.getSunPoints());
 
             //random generator zombie
-            if (p.getGiliran() % 5 == 0) {
+            if (p.getGiliran() % 7 == 0) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                Zombie z1 = new ZombieA(randomNum, x, arrZ);
+                Zombie z1 = new ZombieB(randomNum, x, arrZ);
             }
-            else if (p.getGiliran() % 9 == 0) {
+            else if (p.getGiliran() % 10 == 0) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                Zombie z2 = new ZombieB(randomNum, x, arrZ);
+                Zombie z2 = new ZombieA(randomNum, x, arrZ);
             }
             System.out.print("Command: ");
             String cmd = input.next();
             if (cmd.equals("SKIP")) {
                 p.skip(arrZ, arrP, arrB, x);
-                for (i = 0; i <= 59; i ++) {
-                    if (arrB.getEntity(i) != null) {
-                        arrB.getEntity(i).attack(x, arrB, arrZ);
-                    }
-                }
             }
             else if (cmd.equals("BUY")) {
                 p.buy(x, arrP);

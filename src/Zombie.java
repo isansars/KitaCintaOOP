@@ -111,7 +111,7 @@ public abstract class Zombie{
             if (arrP.getEntity(position - 1) != null) {
                 //serang 
                 if (arrP.getEntity(position-1).getHealth() > 0){
-                    int health = arrP.getEntity(position - 1).getHealth() - arrZ.getEntity(position).getDamage();
+                    int health = arrP.getEntity(position - 1).getHealth() - getDamage();
                     arrP.getEntity(position-1).setHealth(health);
                 }
                 // Health Plant = 0, die.

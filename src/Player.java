@@ -61,16 +61,15 @@ public class Player{
 
         //prioritas 3 : zombie
         for (int i = 0; i <= 59 ; i++) {     
-            if (arrZ.getEntity(i) != null) {
+            if (arrZ.getEntity(i) != null && !grid.gameOver()) {
                 arrZ.getEntity(i).move(grid, arrZ);
             }
         }
         for (int i = 0; i <= 59 ; i++) {     
-            if (arrZ.getEntity(i) != null) {
+            if (arrZ.getEntity(i) != null && !grid.gameOver()) {
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
             }
-        } 
-        
+        }    
     }
 
     //method untuk player membeli plant
