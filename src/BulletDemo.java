@@ -5,6 +5,5 @@ public class BulletDemo {
         EntityArray<Zombie> arrZ = new EntityArray<Zombie>();
         EntityArray<Plant> arrP = new EntityArray<Plant>();
         EntityArray<Bullet> arrB = new EntityArray<Bullet>();
-        Bullet b1 = new NormalBul()
     }
 }

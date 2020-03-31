@@ -65,18 +65,19 @@ public abstract class Zombie{
     }
     // Method
     public void move(GridField grid, EntityArray<Zombie> arr) {
-    //zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
-    //zombie tidak bisa melompati plant
-    //zombie dengan plant di depannya akan tertahan di posisinya
+    // Zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
+    // Zombie tidak bisa melompati plant
+    // Zombie dengan plant di depannya akan tertahan di posisinya
         if ((!grid.getTextButton(position-1).equals("PA")) && (!grid.getTextButton(position-1).equals("PB"))) {
+            // Mengubah posisi yang akan ditempati oleh zombie berdasarkan ada atau tidaknya entitas pada nextPosition
             if (grid.getTextButton(nextPosition).equals("")){
-                //ubah GridField
+                // Mengubah GridField
                 grid.editGrid("", position);
                 position = nextPosition;
                 nextPosition = position - speed;
                 grid.editGrid(this.type, position);
 
-                //ubah EntityArray
+                // Mengubah EntityArray
                 arr.add(position, this);
                 arr.delete(position + speed);
             } else if(grid.getTextButton(nextPosition).equals("PA") || grid.getTextButton(nextPosition).equals("PB")){
@@ -86,17 +87,17 @@ public abstract class Zombie{
                 nextPosition = position - speed;
                 grid.editGrid(this.type, position);
 
-                //ubah EntityArray
+                // Mengubah EntityArray
                 arr.add(position, this);
                 arr.delete(position + speed);
             } else if(grid.getTextButton(nextPosition).equals("ZA") || grid.getTextButton(nextPosition).equals("ZB")){
-                //ubah GridField
+                // Mengubah GridField
                 grid.editGrid("", position);
                 position = nextPosition - 1;
                 nextPosition = position - speed;
                 grid.editGrid(this.type, position);
 
-                //ubah EntityArray
+                // Mengubah EntityArray
                 arr.add(position, this);
                 arr.delete(position + speed);
             } 
@@ -109,7 +110,7 @@ public abstract class Zombie{
     public void attack(GridField grid, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
         if (position != 0) {
             if (arrP.getEntity(position - 1) != null) {
-                //serang 
+                // Serang 
                 if (arrP.getEntity(position-1).getHealth() > 0){
                     int health = arrP.getEntity(position - 1).getHealth() - getDamage();
                     arrP.getEntity(position-1).setHealth(health);

@@ -1,12 +1,12 @@
-//GridField.java
-//inisiasi field player  
+// GridField.java
+// Inisiasi field player  
     
 import java.awt.*;  
 import java.awt.event.*;  
 import javax.swing.*;  
       
 public class GridField{
-    //atribut  
+    // Atribut  
     private JFrame f;
     private JButton[] arrayButton;
       
@@ -14,13 +14,13 @@ public class GridField{
         f = new JFrame();
         arrayButton = new JButton[60];
 
-        //insert into array
+        // Insert into array
         int i;
         for(i = 0; i <= 59; i++) {
             arrayButton[i] = new JButton("");
         }
 
-        //buat grid     
+        // Buat grid     
         for (i = 0; i <= 59; i ++) {
             f.add(arrayButton[i]);
         }
@@ -32,13 +32,13 @@ public class GridField{
         f.setVisible(true);  
     }
 
-    //getter
+    // Getter
     public String getTextButton(int i) {
         return arrayButton[i].getText();
     }
     
     public void editGrid(String code, int position) {
-    //position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
+    // position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
         arrayButton[position].setText(code);
     }
 

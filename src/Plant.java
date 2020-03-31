@@ -8,7 +8,7 @@ public abstract class Plant{
     protected int attFreq;
     protected int turn;
     
-    //Getter
+    // Getter
     public int getPosition(){
         return position;
     }

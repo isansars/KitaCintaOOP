@@ -32,7 +32,8 @@ public class Player{
         this.giliran += 1;
         sunPoints += 25;
         System.out.println(giliran);
-        //prioritas 1 : bullet
+
+        // Prioritas 1 : bullet
         for (int i = 59; i >= 0; i --) {
             if (arrB.getEntity(i) != null) {
                 arrB.getEntity(i).move(grid, arrB);
@@ -44,7 +45,7 @@ public class Player{
             }
         }
 
-        //prioritas 2 : plant shoot
+        // Prioritas 2 : plant shoot
         for (int i = 0; i <= 59; i ++) {
             if (arrP.getEntity(i) != null) {
                 int temp = arrP.getEntity(i).getTurn();
@@ -59,7 +60,7 @@ public class Player{
             }
         }
 
-        //prioritas 3 : zombie
+        // Prioritas 3 : zombie
         for (int i = 0; i <= 59 ; i++) {     
             if (arrZ.getEntity(i) != null && !grid.gameOver()) {
                 arrZ.getEntity(i).move(grid, arrZ);
@@ -72,7 +73,7 @@ public class Player{
         }    
     }
 
-    //method untuk player membeli plant
+    // Method untuk player membeli plant
     public void buy(GridField grid, EntityArray<Plant> arrP) {
         Scanner input = new Scanner(System.in);
 

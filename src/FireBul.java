@@ -1,5 +1,5 @@
 public class FireBul extends Bullet{
-    // turunan Bullet dengan speed = 2, damage = 3, dan bulletType = "o" .
+    // Turunan Bullet dengan speed = 2, damage = 30, dan bulletType = "o" .
 
     public FireBul(int position, GridField grid, EntityArray<Bullet> arr){
         super("o", 30, 2, position, grid, arr);

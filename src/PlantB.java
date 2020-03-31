@@ -1,7 +1,8 @@
 public class PlantB extends Plant{
-    // turunan Plant dengan NormalBul.
+    // Turunan Plant dengan FireBul.
 
-    //Konstruktor
+    // Konstruktor
+    // health : 60, sunPoint : 50, attfreq : 3
     public PlantB(int baris, int kolom,GridField grid, EntityArray<Plant> arr){
         super("PB", 60, 50, 3, "FireBul", baris, kolom, grid, arr);
     }
@@ -29,11 +30,5 @@ public class PlantB extends Plant{
         if (grid.getTextButton(position + i).equals("")) {
             FireBul b = new FireBul(position, grid, arr);
         }
-        /*while(grid.getTextButton(b1.getNextPosition()).equals=""){
-            b1.move();
-            b1.attack();
-        }*/
     }
-
-
 }

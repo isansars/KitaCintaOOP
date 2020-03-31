@@ -1,4 +1,4 @@
-//GameDemo.java
+// GameDemo.java
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.awt.*;  
@@ -10,7 +10,7 @@ public class GameDemo {
         Scanner input = new Scanner(System.in);
         int i, temp, pos;
 
-        //instansiasi
+        // Instansiasi
         GridField x = new GridField();
         EntityArray<Zombie> arrZ = new EntityArray<Zombie>();
         EntityArray<Plant> arrP = new EntityArray<Plant>();
@@ -22,7 +22,7 @@ public class GameDemo {
             System.out.print("sunPoint: ");
             System.out.println(p.getSunPoints());
 
-            //random generator zombie
+            // Random generator Zombie
             if (p.getGiliran() % 7 == 0) {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
                 Zombie z1 = new ZombieB(randomNum, x, arrZ);
