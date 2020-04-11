@@ -4,7 +4,8 @@ public class NormalBul extends Bullet{
     public NormalBul(int position, GridField grid, EntityArray<Bullet> arr){
         super("->", 20, 1, position, grid, arr);
 
-        grid.editGrid(this.bulletType, this.position);
+        //grid.editGrid(this.bulletType, this.position);
+        grid.addNormalBul(position);
         arr.add(this.position, this);
     }
 }

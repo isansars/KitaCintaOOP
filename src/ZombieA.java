@@ -5,5 +5,7 @@ public class ZombieA extends Zombie {
 
     public ZombieA(int ordinat, GridField grid, EntityArray<Zombie> arr) {
         super(2, "ZA", 50, 10, ordinat, grid, arr);
+
+        grid.addZombieA(position);
     }
 }

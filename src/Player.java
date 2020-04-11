@@ -31,12 +31,12 @@ public class Player{
     public void skip(EntityArray<Zombie> arrZ, EntityArray<Plant> arrP, EntityArray<Bullet> arrB, GridField grid){
         this.giliran += 1;
         sunPoints += 25;
-        System.out.println(giliran);
+        //System.out.println(giliran);
 
         // Prioritas 1 : bullet
         for (int i = 59; i >= 0; i --) {
             if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(grid, arrB);
+                arrB.getEntity(i).move(grid, arrB, arrZ);
             }
         }
         for (int i = 0; i <= 59; i ++) {
@@ -50,7 +50,7 @@ public class Player{
             if (arrP.getEntity(i) != null) {
                 int temp = arrP.getEntity(i).getTurn();
                 if (arrP.getEntity(i).getAttFreq() == temp) {
-                    arrP.getEntity(i).shoot(grid, arrB, arrZ);
+                    arrP.getEntity(i).shoot(grid, arrB, arrZ, arrP);
                 }
                 temp--;
                 if (temp ==  0){
@@ -62,12 +62,12 @@ public class Player{
 
         // Prioritas 3 : zombie
         for (int i = 0; i <= 59 ; i++) {     
-            if (arrZ.getEntity(i) != null && !grid.gameOver()) {
-                arrZ.getEntity(i).move(grid, arrZ);
+            if (arrZ.getEntity(i) != null) {
+                arrZ.getEntity(i).move(grid, arrZ, arrP);
             }
         }
         for (int i = 0; i <= 59 ; i++) {     
-            if (arrZ.getEntity(i) != null && !grid.gameOver()) {
+            if (arrZ.getEntity(i) != null) {
                 arrZ.getEntity(i).attack(grid, arrZ, arrP);
             }
         }    
@@ -119,5 +119,23 @@ public class Player{
     }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
+    }
+
+    public boolean gameOver(EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
+        if (arrZ.getEntity(1) != null) {
+            return arrP.getEntity(0) == null;
+        }
+        else if (arrZ.getEntity(16) != null) {
+            return arrP.getEntity(15) == null;
+        }
+        else if (arrZ.getEntity(31) != null) {
+            return arrP.getEntity(30) == null;
+        }
+        else if (arrZ.getEntity(46) != null) {
+            return arrP.getEntity(45) == null;
+        }
+        else {
+            return (arrZ.getEntity(0) != null || arrZ.getEntity(15) != null || arrZ.getEntity(30) != null || arrZ.getEntity(45) != null);
+        }
     }
 }
