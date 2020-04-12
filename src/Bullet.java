@@ -14,16 +14,16 @@ public class Bullet{
         this.damage = damage;
         this.speed = speed;
 
-        int temp = position;
-        if (!grid.getTextButton(temp).equals("")) {
-            while (!grid.getTextButton(temp).equals("")) {
-                temp ++;
-            }
-        }
-        this.position = temp;
-        this.nextPosition = temp + this.speed;
+        // int temp = position;
+        // if (!grid.getTextButton(temp).equals("")) {
+        //     while (!grid.getTextButton(temp).equals("")) {
+        //         temp ++;
+        //     }
+        // }
+        this.position = position;
+        this.nextPosition = position + this.speed;
 
-        grid.editGrid(this.bulletType, this.position);
+        //grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
     }
 
@@ -59,19 +59,28 @@ public class Bullet{
     }
 
     // Method
-    public void move(GridField grid, EntityArray<Bullet> arr) {
+    public void move(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ) {
         if (!isOutRange()) {
             if ((position == 14) || (position == 29) || (position == 44) || (position == 59)){
                 grid.editGrid("", position);
+                grid.deleteIcon(position);
                 arr.delete(position);
             }
-            else if ((grid.getTextButton(nextPosition).equals(""))) {
-                //mengecek di antara position dengan nextPosition ada zombie atau tidak
+            //else if ((grid.getTextButton(nextPosition).equals(""))) {
+            else if (arrZ.getEntity(nextPosition) == null) {
+                //TO DOmengecek di antara position dengan nextPosition ada zombie atau tidak
                 // ubah GridField
                 grid.editGrid("", position);
+                grid.deleteIcon(position);
                 position = nextPosition;
                 nextPosition = position + this.speed;
-                grid.editGrid(bulletType, position);
+                //grid.editGrid(bulletType, position);
+                if (bulletType == "o") {
+                    grid.addFireBul(position);
+                }
+                else if (bulletType == "->") {
+                    grid.addNormalBul(position);
+                }
     
                 // ubah ArrayList
                 arr.add(position, this);
@@ -80,12 +89,16 @@ public class Bullet{
         }
         else {
             grid.editGrid("", position);
+            grid.deleteIcon(position);
             arr.delete(position);
         }
     }
+
+    //attack harus diperbaiki
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (!isOutRange()) {
-            if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
+            //if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
+            if (arrZ.getEntity(position + 1) != null) {
                 // serang zombie
                 int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
                 arrZ.getEntity(position+1).setHealth(health);
@@ -95,6 +108,7 @@ public class Bullet{
                 }
                 // Menghilang setelah menyerang
                 grid.editGrid("", position);
+                grid.deleteIcon(position);
                 arrB.delete(position);
             }
         }

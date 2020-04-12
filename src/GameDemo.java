@@ -18,7 +18,7 @@ public class GameDemo {
         Player p = new Player();
         Zombie z0 = new ZombieA(1, x, arrZ);
 
-        while (!x.gameOver()) {
+        while (!p.gameOver(arrZ, arrP)) {
             System.out.print("sunPoint: ");
             System.out.println(p.getSunPoints());
 
@@ -44,7 +44,7 @@ public class GameDemo {
             }
         }
 
-        if (x.gameOver()) {
+        if (p.gameOver(arrZ, arrP)) {
             System.out.println("Game Over");
         }
     }
