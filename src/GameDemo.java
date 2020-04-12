@@ -11,11 +11,11 @@ public class GameDemo {
         int i, temp, pos;
 
         // Instansiasi
-        Player p = new Player();
-        GridField x = new GridField(p);
         EntityArray<Zombie> arrZ = new EntityArray<Zombie>();
         EntityArray<Plant> arrP = new EntityArray<Plant>();
         EntityArray<Bullet> arrB = new EntityArray<Bullet>();
+        Player p = new Player();
+        GridField x = new GridField(p, arrZ, arrP, arrB);
         Zombie z0 = new ZombieA(1, x, arrZ);
 
         while (!p.gameOver(arrZ, arrP)) {

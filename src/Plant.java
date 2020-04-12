@@ -54,6 +54,18 @@ public abstract class Plant{
         //grid.editGrid(plantType, this.position);
         arr.add(this.position, this);
     }
+
+    public Plant(String plantType, int health, int sunPoints, int attFreq, String bulletType, int position, EntityArray<Plant> arr) {
+        this.plantType  = plantType;
+        this.health     = health;
+        this.sunPoints  = sunPoints;
+        this.attFreq    = attFreq;
+        this.turn       = attFreq;
+        this.bulletType = bulletType;
+        this.position   = position;
+        //grid.editGrid(plantType, this.position);
+        arr.add(this.position, this);
+    }
     
     // Method
     public void die(GridField grid, EntityArray<Plant> arr){

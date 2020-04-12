@@ -8,6 +8,10 @@ public class PlantA extends Plant{
         grid.addPlantA(position);
     }
 
+    public PlantA(int position, EntityArray<Plant> arr){
+        super("PA", 50, 25, 4, "NormalBul", position, arr);
+    }
+
     // Method
     public void shoot(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP){
         int i = 1;
