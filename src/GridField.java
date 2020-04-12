@@ -127,17 +127,12 @@ public class GridField{
             arrayButton[i].setPos(i);
             arrayButton[i].setHorizontalTextPosition(SwingConstants.CENTER);
             arrayButton[i].setVerticalTextPosition(SwingConstants.CENTER);
+            arrayButton[i].addActionListener(new LaneActionListener());
         }
 
         // Buat grid     
         for (i = 0; i <= 59; i ++) {
             lanePane.add(arrayButton[i]);
-        }
-
-        
-
-        for (i = 0; i <= 59; i++){
-            arrayButton[i].addActionListener(new LaneActionListener());
         }
 
         //setting grid layout of 4 rows and 7 columns  
