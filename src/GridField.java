@@ -7,17 +7,98 @@ import javax.swing.*;
       
 public class GridField{
     // Atribut  
+    private Player p;
     private JFrame f;
+    private JPanel lanePane;
+    private JPanel buyPane;
+    private JSplitPane splitPaneV;
     private JButton[] arrayButton;
-    private ButtonGroup buyButton;
-      
-    public GridField(){  
-        f = new JFrame();
-        arrayButton = new JButton[60];
-        buyButton = new ButtonGroup();
+    private JButton buyButtonA;
+    private JButton buyButtonB;
 
-        // Set Title
-        f.setTitle("Plants vs. Zombies - Kita Cinta OOP");
+    public GridField(Player player){  
+        p = player;
+        f = new JFrame();
+
+         // Set Title
+         f.setTitle("Plants vs. Zombies - Kita Cinta OOP");
+         f.setSize(1500,600);
+
+         // Create a splitter pane
+        splitPaneV = new JSplitPane( JSplitPane.VERTICAL_SPLIT );
+        f.add(splitPaneV, BorderLayout.CENTER);
+        createLanePane();
+        createBuyPane();
+        splitPaneV.setTopComponent(lanePane);
+        splitPaneV.setBottomComponent(buyPane);
+        splitPaneV.setResizeWeight(0.7);
+        splitPaneV.setOneTouchExpandable(true);
+        
+        //f.add(lanePane);
+        //f.add(buyPane);
+        f.setVisible(true);  
+    }
+
+    // Getter
+    public String getTextButton(int i) {
+        return arrayButton[i].getText();
+    }
+
+    public void createBuyPane(){
+        buyPane = new JPanel();
+        
+        GridBagLayout gridbag = new GridBagLayout();
+        GridBagConstraints gbc = new GridBagConstraints();
+        int top = 0;
+        int bottom = 0;
+        int left = 10;
+        int right = 10;
+        gbc.insets = new Insets(top, left, bottom, right);
+        buyPane.setLayout(gridbag);
+        
+
+        // Buat Plant Button - BUY
+        // Plant A
+        buyButtonA = new JButton( new AbstractAction("Plant A (25 SP)") {
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                // add Action
+                if (p.getSunPoints() < 25){
+                    sunPointsMinPrompt();   
+                } else{
+                    
+                }
+            }
+        });
+        buyButtonA.setPreferredSize(new Dimension(200, 50));
+        Icon iconA = new ImageIcon("/home/madiha/KitaCintaOOP/icon/PlantA.png");
+        buyButtonA.setIcon(iconA);
+        buyPane.add(buyButtonA, gbc);
+
+        // Plant B
+        buyButtonB = new JButton( new AbstractAction("Plant B (50 SP)") {
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                // add Action
+                if (p.getSunPoints() < 50){
+                    sunPointsMinPrompt();   
+                } else{
+                    
+                }
+            }
+        }); 
+        buyButtonB.setPreferredSize(new Dimension(200, 50));
+        Icon iconB = new ImageIcon("/home/madiha/KitaCintaOOP/icon/PlantB.png");
+        buyButtonA.setIcon(iconB);
+        buyPane.add(buyButtonB, gbc);
+        
+        buyPane.setSize(1500,200);
+        buyPane.setVisible(true);
+    }
+
+    public void createLanePane(){
+        lanePane = new JPanel();
+        arrayButton = new JButton[60];
 
         // Insert into array
         int i;
@@ -29,61 +110,19 @@ public class GridField{
 
         // Buat grid     
         for (i = 0; i <= 59; i ++) {
-            f.add(arrayButton[i]);
+            lanePane.add(arrayButton[i]);
         }
-      
+
         //setting grid layout of 4 rows and 7 columns  
-        f.setLayout(new GridLayout(4,15));  
-
-        // Buat Plant Button - BUY
-        // Plant A
-        JButton paButton = new JButton( new AbstractAction("Plant A") {
-            @Override
-            public void actionPerformed( ActionEvent e ) {
-                // add Action
-            }
-        });
-        paButton.setText("PA");
-        buyButton.add(paButton);
-        f.add(paButton);
-        
-        // Plant B
-        JButton pbButton = new JButton( new AbstractAction("Plant B") {
-            @Override
-            public void actionPerformed( ActionEvent e ) {
-                // add Action
-            }
-        });
-        pbButton.setText("PB");
-        buyButton.add(pbButton);
-        f.add(pbButton);
-
-        
-        /* buyButton.setBounds(130,100,100, 40);
-
-        JButton addButton = new JButton( new AbstractAction("add") {
-            @Override
-            public void actionPerformed( ActionEvent e ) {
-                // add Action
-            }
-        }); */
-      
-        f.setSize(1500,400);  
-        f.setVisible(true);  
+        lanePane.setLayout(new GridLayout(4,15));  
+        lanePane.setSize(1500,400);
+        lanePane.setVisible(true);
     }
 
-    // Getter
-    public String getTextButton(int i) {
-        return arrayButton[i].getText();
+    public void sunPointsMinPrompt(){
+        JFrame frame = new JFrame();
+        JOptionPane.showMessageDialog(frame, "Jumlah SunPoints yang Anda miliki tidak mencukupi.");
     }
-
-    /* @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == button1){
-        //Do Something
-        }else if(e.getSource() == button2){
-        //Do Something Else
-    } */
     
     public void deleteIcon(int position) {
     // position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
