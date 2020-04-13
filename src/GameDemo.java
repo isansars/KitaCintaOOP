@@ -42,10 +42,6 @@ public class GameDemo {
 
         PVZThread Rzom = new PVZThread("zombieThread", x, p);
         Rzom.start(); */
-        if (p.gameOver(arrZ, arrP)) {
-            JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame, "Game Over");
-        }
     }
 
     static class PVZThread implements Runnable {
@@ -159,6 +155,12 @@ public class GameDemo {
                         } */
                     }
                     // Let the thread sleep for a while.
+                    if (p.gameOver(arrZ, arrP)) {
+                        Thread.interrupted();
+                        JFrame frame = new JFrame();
+                        JOptionPane.showMessageDialog(frame, "Game Over");
+                        System.out.println("go");
+                    }
                     Thread.sleep(3000);
                 }
             } catch (InterruptedException e) {
