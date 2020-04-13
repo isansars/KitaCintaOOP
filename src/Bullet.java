@@ -111,6 +111,32 @@ public class Bullet{
                 grid.deleteIcon(position);
                 arrB.delete(position);
             }
+            else if (arrZ.getEntity(position + 2) != null) {
+                 // serang zombie
+                int health = arrZ.getEntity(position + 2).getHealth() - arrB.getEntity(position).getDamage();
+                arrZ.getEntity(position+2).setHealth(health);
+                // Health Zombie = 0, die.
+                if (arrZ.getEntity(position+2).getHealth() <= 0){
+                    arrZ.getEntity(position+2).die(grid, arrZ);
+                }
+                // Menghilang setelah menyerang
+                grid.editGrid("", position);
+                grid.deleteIcon(position);
+                arrB.delete(position);
+            }
+            else if (arrZ.getEntity(position + 3) != null && bulletType == "o") {
+                // serang zombie
+               int health = arrZ.getEntity(position + 3).getHealth() - arrB.getEntity(position).getDamage();
+               arrZ.getEntity(position+3).setHealth(health);
+                // Health Zombie = 0, die.
+               if (arrZ.getEntity(position+3).getHealth() <= 0){
+                   arrZ.getEntity(position+3).die(grid, arrZ);
+               }
+               // Menghilang setelah menyerang
+               grid.editGrid("", position);
+               grid.deleteIcon(position);
+               arrB.delete(position);
+            }
         }
     }
 
