@@ -23,7 +23,7 @@ public class Bullet{
         this.position = position;
         this.nextPosition = position + this.speed;
 
-        grid.editGrid(this.bulletType, this.position);
+        //grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
     }
 
