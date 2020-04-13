@@ -76,6 +76,7 @@ public class GameDemo {
                         if (p.getGiliran()%2 == 0){
                             p.setSunPoint(p.getSunPoints()+25);
                         }
+                        grid.getSunPointsView().setText("Jumlah SunPoints: " + p.getSunPoints());
                         for (int i = 59; i >= 0; i--){
                             if (arrB.getEntity(i) != null) {
                                 arrB.getEntity(i).move(grid, arrB, arrZ);

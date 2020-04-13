@@ -58,6 +58,12 @@ public class GridField{
     public EntityArray<Bullet> getArrB(){
         return arrB;
     }
+    public JLabel getSunPointsView(){
+        return sunPointsView;
+    }
+    public void setSunPointsView(JLabel sunPointsView){
+        this.sunPointsView = sunPointsView;
+    }
 
     public void createBuyPane(){
         buyPane = new JPanel();
