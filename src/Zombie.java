@@ -60,7 +60,7 @@ public abstract class Zombie{
         }
         this.nextPosition = position - speed;
 
-        //grid.editGrid(this.type, this.position);
+        grid.editGrid(this.type, this.position);
         arr.add(this.position, this);
     }
     // Method

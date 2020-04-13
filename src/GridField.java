@@ -91,7 +91,7 @@ public class GridField{
             }
         });
         buyButtonA.setPreferredSize(new Dimension(200, 50));
-        Icon iconA = new ImageIcon("/icon/PlantA.png");
+        Icon iconA = new ImageIcon("icon/PlantA.png");
         buyButtonA.setIcon(iconA);
         buyPane.add(buyButtonA, gbc);
 
@@ -108,8 +108,8 @@ public class GridField{
             }
         }); 
         buyButtonB.setPreferredSize(new Dimension(200, 50));
-        Icon iconB = new ImageIcon("/icon/PlantB.png");
-        buyButtonA.setIcon(iconB);
+        Icon iconB = new ImageIcon("icon/PlantB.png");
+        buyButtonB.setIcon(iconB);
         buyPane.add(buyButtonB, gbc);
         
         buyPane.setSize(1500,200);
@@ -149,7 +149,7 @@ public class GridField{
             if(btn.getText().equals("")){
                 if(buyPlant.equals("Plant A")){
                     Plant pnew = new PlantA(pos, arrP);
-                    Icon iconA = new ImageIcon("/icon/PlantA.png");
+                    Icon iconA = new ImageIcon("icon/PlantA.png");
                     btn.setText(pnew.getPlantType());
                     btn.setIcon(iconA);
                     p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
@@ -159,7 +159,7 @@ public class GridField{
                     JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
                 } else if(buyPlant.equals("Plant B")){
                     Plant pnew = new PlantB(pos, arrP);
-                    Icon iconB = new ImageIcon("/icon/PlantB.png");
+                    Icon iconB = new ImageIcon("icon/PlantB.png");
                     btn.setText(pnew.getPlantType());
                     btn.setIcon(iconB);
                     p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
@@ -204,7 +204,7 @@ public class GridField{
     
     public void deleteIcon(int position) {
     // position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
-        Icon icon = new ImageIcon("/icon/Blank.png");
+        Icon icon = new ImageIcon("icon/Blank.png");
         arrayButton[position].setIcon(icon);
     }
 
@@ -213,32 +213,32 @@ public class GridField{
     }
 
     public void addPlantA(int position) {
-        Icon icon = new ImageIcon("/icon/PlantA.png");
+        Icon icon = new ImageIcon("icon/PlantA.png");
         arrayButton[position].setIcon(icon);
     }
 
     public void addPlantB(int position) {
-        Icon icon = new ImageIcon("/icon/PlantB.png");
+        Icon icon = new ImageIcon("icon/PlantB.png");
         arrayButton[position].setIcon(icon);
     }
 
     public void addZombieA(int position) {
-        Icon icon = new ImageIcon("/icon/ZombieA.png");
+        Icon icon = new ImageIcon("icon/ZombieA.png");
         arrayButton[position].setIcon(icon);
     }
 
     public void addZombieB(int position) {
-        Icon icon = new ImageIcon("/icon/ZombieB.png");
+        Icon icon = new ImageIcon("icon/ZombieB.png");
         arrayButton[position].setIcon(icon);
     }
 
     public void addNormalBul(int position) {
-        Icon icon = new ImageIcon("/icon/NormalBul.png");
+        Icon icon = new ImageIcon("icon/NormalBul.png");
         arrayButton[position].setIcon(icon);
     }
 
     public void addFireBul(int position) {
-        Icon icon = new ImageIcon("/icon/FireBul.png");
+        Icon icon = new ImageIcon("icon/FireBul.png");
         arrayButton[position].setIcon(icon);
     }
 
