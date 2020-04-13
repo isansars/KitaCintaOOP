@@ -37,11 +37,11 @@ public class GameDemo {
         PVZThread Rbul = new PVZThread("bulletThread", x, p);
         Rbul.start();
             
-        PVZThread Rplant = new PVZThread("plantThread", x, p);
+        /* PVZThread Rplant = new PVZThread("plantThread", x, p);
         Rplant.start();
 
         PVZThread Rzom = new PVZThread("zombieThread", x, p);
-        Rzom.start();
+        Rzom.start(); */
         if (p.gameOver(arrZ, arrP)) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "Game Over");
