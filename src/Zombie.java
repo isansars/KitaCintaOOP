@@ -22,6 +22,9 @@ public abstract class Zombie{
     public int getDamage() {
         return damage;
     }
+    public String getZombieType(){
+        return type;
+    }
 
     // Setter
     public void setPosition(int position){
@@ -58,7 +61,7 @@ public abstract class Zombie{
         else if (ordinat == 4) {
             position = 14;
         }
-        this.nextPosition = position - speed;
+        this.nextPosition = position - 1;
 
         //grid.editGrid(this.type, this.position);
         arr.add(this.position, this);
@@ -80,7 +83,7 @@ public abstract class Zombie{
 
                 //ubah jadi posisi baru
                 position = nextPosition;
-                nextPosition = position - speed;
+                nextPosition = position - 1;
                 //grid.editGrid(type, position);
                 arrZ.add(position, this);
                 //System.out.println(grid.getTextButton(position));
@@ -101,7 +104,7 @@ public abstract class Zombie{
 
                 //ubah jadi posisi baru
                 position = nextPosition + 1;
-                nextPosition = position - speed;
+                nextPosition = position - 1;
                 //grid.editGrid(type, position);
                 arrZ.add(position, this);
                 //System.out.println(grid.getTextButton(position));
@@ -122,7 +125,7 @@ public abstract class Zombie{
  
                  //ubah jadi posisi baru
                  position = nextPosition - 1;
-                 nextPosition = position - speed;
+                 nextPosition = position - 1;
                  //grid.editGrid(type, position);
                  arrZ.add(position, this);
                 //System.out.println(grid.getTextButton(position));

@@ -34,24 +34,32 @@ public class GameDemo {
             System.out.println("Input Anda tidak valid");
         } */
 
-        PVZThread Rbul = new PVZThread("bulletThread", x, p);
-        Rbul.start();
+        PVZThread RNbul = new PVZThread("bulletThread", "NormalBul", x, p);
+        RNbul.start();
+        PVZThread RFbul = new PVZThread("bulletThread", "FireBul", x, p);
+        RFbul.start();
             
-        /* PVZThread Rplant = new PVZThread("plantThread", x, p);
-        Rplant.start();
+        PVZThread RplantA = new PVZThread("plantThread", "PA", x, p);
+        RplantA.start();
+        PVZThread RplantB = new PVZThread("plantThread", "PB", x, p);
+        RplantB.start(); 
 
-        PVZThread Rzom = new PVZThread("zombieThread", x, p);
-        Rzom.start(); */
+        PVZThread RzomA = new PVZThread("zombieThread", "ZA", x, p);
+        RzomA.start(); 
+        PVZThread RzomB = new PVZThread("zombieThread", "ZB", x, p);
+        RzomB.start(); 
     }
 
     static class PVZThread implements Runnable {
         private Thread t;
         private Player p;
         private String threadName;
+        private String entityType;
         private GridField grid;
 
-        PVZThread(String name, GridField grid, Player player){
+        PVZThread(String name, String entityType, GridField grid, Player player){
             threadName = name;
+            this.entityType = entityType;
             this.grid = grid;
             p = player;
             //System.out.println("Creating " +  threadName );
@@ -73,17 +81,36 @@ public class GameDemo {
                             p.setSunPoint(p.getSunPoints()+25);
                         }
                         grid.getSunPointsView().setText("Jumlah SunPoints: " + p.getSunPoints());
-                        for (int i = 59; i >= 0; i--){
-                            if (arrB.getEntity(i) != null) {
-                                arrB.getEntity(i).move(grid, arrB, arrZ);
+                        if (entityType.equals("NormalBul")){
+                            System.out.println("NormaBul run");
+                            // Bullet Move
+                            for (int i = 59; i >= 0; i--){
+                                if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("->"))) {
+                                    arrB.getEntity(i).move(grid, arrB, arrZ);
+                                }
                             }
-                        }
-                        for (int i = 0; i <= 59; i ++) {
-                            if (arrB.getEntity(i) != null) {
-                                arrB.getEntity(i).attack(grid, arrB, arrZ);
+                            // Bullet Attack
+                            for (int i = 0; i <= 59; i ++) {
+                                if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("->"))) {
+                                    arrB.getEntity(i).attack(grid, arrB, arrZ);
+                                }
                             }
+                            Thread.sleep(4000);
+                        } else if (entityType.equals("FireBul")){
+                            System.out.println("FireBul run");
+                            for (int i = 59; i >= 0; i--){
+                                if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("o"))) {
+                                    arrB.getEntity(i).move(grid, arrB, arrZ);
+                                }
+                            }
+                            for (int i = 0; i <= 59; i ++) {
+                                if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("o"))) {
+                                    arrB.getEntity(i).attack(grid, arrB, arrZ);
+                                }
+                            }
+                            Thread.sleep(2000);
                         }
-
+                        /*
                         // plant
                         for (int i = 0; i <= 59; i ++) {
                             if (arrP.getEntity(i) != null) {
@@ -118,9 +145,27 @@ public class GameDemo {
                         else if (p.getGiliran() % 10 == 0) {
                             int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
                             Zombie z2 = new ZombieA(randomNum, grid, arrZ);
+                        } */
+                    } else if (threadName.equals("plantThread")){
+                        if (entityType.equals("PA")){
+                            System.out.println("PA run");
+                            for (int i = 0; i <= 59; i ++) {
+                                if (arrP.getEntity(i) != null && (arrP.getEntity(i).getPlantType().equals(entityType))) {
+                                    arrP.getEntity(i).shoot(grid, arrB, arrZ, arrP);
+                                }
+                            }
+                            Thread.sleep(8*1000);
+                        } else if (entityType.equals("PB")){
+                            System.out.println("PB run");
+                            for (int i = 0; i <= 59; i ++) {
+                                if (arrP.getEntity(i) != null && (arrP.getEntity(i).getPlantType().equals(entityType))) {
+                                    arrP.getEntity(i).shoot(grid, arrB, arrZ, arrP);
+                                }
+                            }
+                            Thread.sleep(4*1000);
                         }
-                    /*} else if (threadName.equals("plantThread")){
-                        for (int i = 0; i <= 59; i ++) {
+                        
+                        /* for (int i = 0; i <= 59; i ++) {
                             if (arrP.getEntity(i) != null) {
                                 int temp = arrP.getEntity(i).getTurn();
                                 if (arrP.getEntity(i).getAttFreq() == temp) {
@@ -133,18 +178,36 @@ public class GameDemo {
                                 arrP.getEntity(i).setTurn(temp);
                             }
                         }*/
-                    /* } else if (threadName.equals("zombieThread")){
+                    } else if (threadName.equals("zombieThread")){
+
+                        if (entityType.equals("ZA")){
+                            System.out.println("ZA run");
+                            for (int i = 0; i <= 59 ; i++){
+                                if ((arrZ.getEntity(i) != null) && (arrZ.getEntity(i).getZombieType().equals(entityType))) {
+                                    arrZ.getEntity(i).move(grid, arrZ, arrP);
+                                }
+                            }
+                            for (int i = 0; i <= 59 ; i++) {     
+                                if ((arrZ.getEntity(i) != null) && (arrZ.getEntity(i).getZombieType().equals(entityType))) {
+                                    arrZ.getEntity(i).attack(grid, arrZ, arrP);
+                                }
+                            }
+                            Thread.sleep(4*1000);
+                        } else if (entityType.equals("ZB")){
+                            System.out.println("ZB run");
+                            for (int i = 0; i <= 59 ; i++){
+                                if ((arrZ.getEntity(i) != null) && (arrZ.getEntity(i).getZombieType().equals(entityType))) {
+                                    arrZ.getEntity(i).move(grid, arrZ, arrP);
+                                }
+                            }
+                            for (int i = 0; i <= 59 ; i++) {     
+                                if ((arrZ.getEntity(i) != null) && (arrZ.getEntity(i).getZombieType().equals(entityType))) {
+                                    arrZ.getEntity(i).attack(grid, arrZ, arrP);
+                                }
+                            }
+                            Thread.sleep(2*1000);
+                        } 
                         // Random generator Zombie
-                        for (int i = 0; i <= 59 ; i++) {     
-                            if (arrZ.getEntity(i) != null) {
-                                arrZ.getEntity(i).move(grid, arrZ, arrP);
-                            }
-                        }
-                        for (int i = 0; i <= 59 ; i++) {     
-                            if (arrZ.getEntity(i) != null) {
-                                arrZ.getEntity(i).attack(grid, arrZ, arrP);
-                            }
-                        }
                         if (p.getGiliran() % 11 == 0) {
                             int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
                             Zombie z1 = new ZombieB(randomNum, grid, arrZ);
@@ -152,7 +215,7 @@ public class GameDemo {
                         else if (p.getGiliran() % 15 == 0) {
                             int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
                             Zombie z2 = new ZombieA(randomNum, grid, arrZ);
-                        } */
+                        }
                     }
                     // Let the thread sleep for a while.
                     if (p.gameOver(arrZ, arrP)) {
@@ -161,7 +224,6 @@ public class GameDemo {
                         JOptionPane.showMessageDialog(frame, "Game Over");
                         System.out.println("go");
                     }
-                    Thread.sleep(3000);
                 }
             } catch (InterruptedException e) {
                 System.out.println("Thread " +  threadName + " interrupted.");
