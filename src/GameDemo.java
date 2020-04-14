@@ -47,7 +47,8 @@ public class GameDemo {
         PVZThread RzomA = new PVZThread("zombieThread", "ZA", x, p);
         RzomA.start(); 
         PVZThread RzomB = new PVZThread("zombieThread", "ZB", x, p);
-        RzomB.start(); 
+        RzomB.start();
+
     }
 
     static class PVZThread implements Runnable {
@@ -206,15 +207,16 @@ public class GameDemo {
                                 }
                             }
                             Thread.sleep(2*1000);
-                        } 
-                        // Random generator Zombie
-                        if (p.getGiliran() % 11 == 0) {
-                            int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                            Zombie z1 = new ZombieB(randomNum, grid, arrZ);
-                        }
-                        else if (p.getGiliran() % 15 == 0) {
-                            int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                            Zombie z2 = new ZombieA(randomNum, grid, arrZ);
+                        } else if (entityType.equals("RZ")){
+                            // Random generator Zombie
+                            if (p.getGiliran() % 11 == 0) {
+                                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                                Zombie z1 = new ZombieB(randomNum, grid, arrZ);
+                            }
+                            else if (p.getGiliran() % 15 == 0) {
+                                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                                Zombie z2 = new ZombieA(randomNum, grid, arrZ);
+                            }
                         }
                     }
                     // Let the thread sleep for a while.
