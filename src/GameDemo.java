@@ -180,6 +180,15 @@ public class GameDemo {
                             }
                         }*/
                     } else if (threadName.equals("zombieThread")){
+                        // Random generator Zombie
+                        if (p.getGiliran() % 11 == 0) {
+                            int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                            Zombie z1 = new ZombieB(randomNum, grid, arrZ);
+                        }
+                        else if (p.getGiliran() % 15 == 0) {
+                            int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+                            Zombie z2 = new ZombieA(randomNum, grid, arrZ);
+                        }
 
                         if (entityType.equals("ZA")){
                             System.out.println("ZA run");
@@ -207,16 +216,6 @@ public class GameDemo {
                                 }
                             }
                             Thread.sleep(2*1000);
-                        } else if (entityType.equals("RZ")){
-                            // Random generator Zombie
-                            if (p.getGiliran() % 11 == 0) {
-                                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                                Zombie z1 = new ZombieB(randomNum, grid, arrZ);
-                            }
-                            else if (p.getGiliran() % 15 == 0) {
-                                int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-                                Zombie z2 = new ZombieA(randomNum, grid, arrZ);
-                            }
                         }
                     }
                     // Let the thread sleep for a while.
