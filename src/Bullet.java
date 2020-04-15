@@ -73,7 +73,7 @@ public class Bullet{
                 grid.editGrid("", position);
                 grid.deleteIcon(position);
                 position = nextPosition;
-                nextPosition = position + 1;
+                nextPosition = position + speed;
                 //grid.editGrid(bulletType, position);
                 if (bulletType == "o") {
                     grid.addFireBul(position);
@@ -97,6 +97,7 @@ public class Bullet{
     //attack harus diperbaiki
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (!isOutRange()) {
+            //System.out.println(nextPosition);
             //if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
             if (arrZ.getEntity(position + 1) != null) {
                 // serang zombie
@@ -111,7 +112,7 @@ public class Bullet{
                 grid.deleteIcon(position);
                 arrB.delete(position);
             }
-            else if (arrZ.getEntity(position + 2) != null) {
+            else if (arrZ.getEntity(position + 2) != null && bulletType.equals('o')) {
                  // serang zombie
                 int health = arrZ.getEntity(position + 2).getHealth() - arrB.getEntity(position).getDamage();
                 arrZ.getEntity(position+2).setHealth(health);
@@ -124,19 +125,19 @@ public class Bullet{
                 grid.deleteIcon(position);
                 arrB.delete(position);
             }
-            else if (arrZ.getEntity(position + 3) != null && bulletType == "o") {
-                // serang zombie
-               int health = arrZ.getEntity(position + 3).getHealth() - arrB.getEntity(position).getDamage();
-               arrZ.getEntity(position+3).setHealth(health);
-                // Health Zombie = 0, die.
-               if (arrZ.getEntity(position+3).getHealth() <= 0){
-                   arrZ.getEntity(position+3).die(grid, arrZ);
-               }
-               // Menghilang setelah menyerang
-               grid.editGrid("", position);
-               grid.deleteIcon(position);
-               arrB.delete(position);
-            }
+            // else if (arrZ.getEntity(position + 3) != null && bulletType == "o") {
+            //     // serang zombie
+            //    int health = arrZ.getEntity(position + 3).getHealth() - arrB.getEntity(position).getDamage();
+            //    arrZ.getEntity(position+3).setHealth(health);
+            //     // Health Zombie = 0, die.
+            //    if (arrZ.getEntity(position+3).getHealth() <= 0){
+            //        arrZ.getEntity(position+3).die(grid, arrZ);
+            //    }
+            //    // Menghilang setelah menyerang
+            //    grid.editGrid("", position);
+            //    grid.deleteIcon(position);
+            //    arrB.delete(position);
+            // }
         }
     }
 
@@ -151,7 +152,7 @@ public class Bullet{
             return (nextPosition >= 45);
         }
         else {
-            return (nextPosition > 59);
+            return (nextPosition >= 60);
         }
     }
 }
