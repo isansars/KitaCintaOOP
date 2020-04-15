@@ -6,6 +6,6 @@ public class FireBul extends Bullet{
 
         //grid.editGrid(this.bulletType, this.position);
         grid.addFireBul(position);
-        arr.add(this.position, this);
+        //arr.add(this.position, this);
     }
 }

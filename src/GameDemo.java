@@ -96,7 +96,7 @@ public class GameDemo {
                                     arrB.getEntity(i).attack(grid, arrB, arrZ);
                                 }
                             }
-                            Thread.sleep(4000);
+                            Thread.sleep(4000); //frekuensi move dan attack NormalBul
                         } else if (entityType.equals("FireBul")){
                             System.out.println("FireBul run");
                             for (int i = 59; i >= 0; i--){
@@ -109,7 +109,7 @@ public class GameDemo {
                                     arrB.getEntity(i).attack(grid, arrB, arrZ);
                                 }
                             }
-                            Thread.sleep(2000);
+                            Thread.sleep(2000); //frekuensi move dan attack FireBul
                         }
                         /*
                         // plant
@@ -155,7 +155,7 @@ public class GameDemo {
                                     arrP.getEntity(i).shoot(grid, arrB, arrZ, arrP);
                                 }
                             }
-                            Thread.sleep(8*1000);
+                            Thread.sleep(8*1000); //frekuensi tembakan Plant A
                         } else if (entityType.equals("PB")){
                             System.out.println("PB run");
                             for (int i = 0; i <= 59; i ++) {
@@ -163,7 +163,7 @@ public class GameDemo {
                                     arrP.getEntity(i).shoot(grid, arrB, arrZ, arrP);
                                 }
                             }
-                            Thread.sleep(4*1000);
+                            Thread.sleep(4*1000); //frekuensi tembakan Plant B
                         }
                         
                         /* for (int i = 0; i <= 59; i ++) {
@@ -202,7 +202,7 @@ public class GameDemo {
                                     arrZ.getEntity(i).attack(grid, arrZ, arrP);
                                 }
                             }
-                            Thread.sleep(4*1000);
+                            Thread.sleep(4*1000); //frekuensi move dan attack Zombie A
                         } else if (entityType.equals("ZB")){
                             System.out.println("ZB run");
                             for (int i = 0; i <= 59 ; i++){
@@ -215,7 +215,7 @@ public class GameDemo {
                                     arrZ.getEntity(i).attack(grid, arrZ, arrP);
                                 }
                             }
-                            Thread.sleep(2*1000);
+                            Thread.sleep(2*1000); //frekuensi move dan attack Zombie B
                         }
                     }
                     // Let the thread sleep for a while.
@@ -224,6 +224,9 @@ public class GameDemo {
                         JFrame frame = new JFrame();
                         JOptionPane.showMessageDialog(frame, "Game Over");
                         System.out.println("go");
+
+                        //terminate game
+                        System.exit(0);
                     }
                 }
             } catch (InterruptedException e) {

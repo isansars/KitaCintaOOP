@@ -21,7 +21,7 @@ public class Bullet{
         //     }
         // }
         this.position = position;
-        this.nextPosition = position + 1;
+        this.nextPosition = position + speed;
 
         //grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
@@ -84,7 +84,7 @@ public class Bullet{
     
                 // ubah ArrayList
                 arr.add(position, this);
-                arr.delete(position - 1);
+                arr.delete(position - speed);
             }
         }
         else {
