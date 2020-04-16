@@ -5,7 +5,7 @@ public abstract class Zombie{
     protected int position;
     protected String type;
     protected int nextPosition;
-    protected int speed;
+    protected static int speed;
     protected int health;
     protected int damage;
 
@@ -24,6 +24,9 @@ public abstract class Zombie{
     }
     public String getZombieType(){
         return type;
+    }
+    public static int getSpeed() {
+        return speed;
     }
 
     // Setter

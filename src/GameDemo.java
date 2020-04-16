@@ -87,7 +87,7 @@ public class GameDemo {
                             // Bullet Move
                             for (int i = 59; i >= 0; i--){
                                 if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("->"))) {
-                                    arrB.getEntity(i).move(grid, arrB, arrZ);
+                                    arrB.getEntity(i).move(grid, arrB, arrZ, arrP);
                                 }
                             }
                             // Bullet Attack
@@ -101,7 +101,7 @@ public class GameDemo {
                             System.out.println("FireBul run");
                             for (int i = 59; i >= 0; i--){
                                 if (arrB.getEntity(i) != null && (arrB.getEntity(i).getBulletType().equals("o"))) {
-                                    arrB.getEntity(i).move(grid, arrB, arrZ);
+                                    arrB.getEntity(i).move(grid, arrB, arrZ, arrP);
                                 }
                             }
                             for (int i = 0; i <= 59; i ++) {

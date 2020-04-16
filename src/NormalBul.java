@@ -1,8 +1,8 @@
 public class NormalBul extends Bullet{
-    // Turunan Bullet dengan damage = 20, speed = 1, dan bulletType = "->" .
+    // Turunan Bullet dengan damage = 20, speed = 4000, dan bulletType = "->" .
 
     public NormalBul(int position, GridField grid, EntityArray<Bullet> arr){
-        super("->", 20, 1, position, grid, arr);
+        super("->", 20, 5000, position, grid, arr);
 
         //grid.editGrid(this.bulletType, this.position);
         grid.addNormalBul(position);

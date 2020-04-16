@@ -6,7 +6,7 @@ public class Bullet{
     protected int position;
     protected int nextPosition;
     protected int damage;
-    protected int speed;
+    protected static int speed;
 
     // Konstruktor
     public Bullet(String bulletType, int damage, int speed, int position, GridField grid, EntityArray<Bullet> arr) {
@@ -21,7 +21,7 @@ public class Bullet{
         //     }
         // }
         this.position = position;
-        this.nextPosition = position + speed;
+        this.nextPosition = position + 1;
 
         //grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
@@ -40,7 +40,7 @@ public class Bullet{
     public int getDamage() {
         return damage;
     }
-    public int getSpeed() {
+    public static int getSpeed() {
         return speed;
     }
 
@@ -59,8 +59,9 @@ public class Bullet{
     }
 
     // Method
-    public void move(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ) {
+    public void move(GridField grid, EntityArray<Bullet> arr, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP) {
         if (!isOutRange()) {
+            int temp = position;
             if ((position == 14) || (position == 29) || (position == 44) || (position == 59)){
                 grid.editGrid("", position);
                 grid.deleteIcon(position);
@@ -73,7 +74,7 @@ public class Bullet{
                 grid.editGrid("", position);
                 grid.deleteIcon(position);
                 position = nextPosition;
-                nextPosition = position + speed;
+                nextPosition = position + 1;
                 //grid.editGrid(bulletType, position);
                 if (bulletType == "o") {
                     grid.addFireBul(position);
@@ -84,7 +85,11 @@ public class Bullet{
     
                 // ubah ArrayList
                 arr.add(position, this);
-                arr.delete(position - speed);
+                arr.delete(temp);
+            }
+            else if (arrP.getEntity(nextPosition) != null || arr.getEntity(nextPosition) != null) {
+                nextPosition += 1;
+                move(grid, arr, arrZ, arrP);
             }
         }
         else {
@@ -112,19 +117,19 @@ public class Bullet{
                 grid.deleteIcon(position);
                 arrB.delete(position);
             }
-            else if (arrZ.getEntity(position + 2) != null && bulletType.equals('o')) {
-                 // serang zombie
-                int health = arrZ.getEntity(position + 2).getHealth() - arrB.getEntity(position).getDamage();
-                arrZ.getEntity(position+2).setHealth(health);
-                // Health Zombie = 0, die.
-                if (arrZ.getEntity(position+2).getHealth() <= 0){
-                    arrZ.getEntity(position+2).die(grid, arrZ);
-                }
-                // Menghilang setelah menyerang
-                grid.editGrid("", position);
-                grid.deleteIcon(position);
-                arrB.delete(position);
-            }
+            // else if (arrZ.getEntity(position + 2) != null && bulletType.equals('o')) {
+            //      // serang zombie
+            //     int health = arrZ.getEntity(position + 2).getHealth() - arrB.getEntity(position).getDamage();
+            //     arrZ.getEntity(position+2).setHealth(health);
+            //     // Health Zombie = 0, die.
+            //     if (arrZ.getEntity(position+2).getHealth() <= 0){
+            //         arrZ.getEntity(position+2).die(grid, arrZ);
+            //     }
+            //     // Menghilang setelah menyerang
+            //     grid.editGrid("", position);
+            //     grid.deleteIcon(position);
+            //     arrB.delete(position);
+            // }
             // else if (arrZ.getEntity(position + 3) != null && bulletType == "o") {
             //     // serang zombie
             //    int health = arrZ.getEntity(position + 3).getHealth() - arrB.getEntity(position).getDamage();

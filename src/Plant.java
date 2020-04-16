@@ -5,7 +5,7 @@ public abstract class Plant{
     protected int sunPoints;
     protected int health;
     protected String bulletType;
-    protected int attFreq;
+    protected static int attFreq;
     protected int turn;
     
     // Getter
@@ -24,7 +24,7 @@ public abstract class Plant{
     public String getBulletType(){
         return bulletType;
     }
-    public int getAttFreq(){
+    public static int getAttFreq(){
         return attFreq;
     }
     public int getTurn(){

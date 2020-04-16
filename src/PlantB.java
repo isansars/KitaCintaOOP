@@ -2,9 +2,9 @@ public class PlantB extends Plant{
     // Turunan Plant dengan FireBul.
 
     // Konstruktor
-    // health : 60, sunPoint : 50, attfreq : 3
+    // health : 60, sunPoint : 50, attfreq : 6000
     public PlantB(int baris, int kolom,GridField grid, EntityArray<Plant> arr){
-        super("PB", 60, 50, 3, "FireBul", baris, kolom, grid, arr);
+        super("PB", 60, 50, 6000, "FireBul", baris, kolom, grid, arr);
         grid.addPlantB(position);
     }
     public PlantB(int position, EntityArray<Plant> arr){
