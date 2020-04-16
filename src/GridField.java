@@ -49,6 +49,9 @@ public class GridField{
     public String getTextButton(int i) {
         return arrayButton[i].getText();
     }
+    public JButton getButton(int i) {
+        return arrayButton[i];
+    }
     public EntityArray<Zombie> getArrZ(){
         return arrZ;
     }
@@ -152,7 +155,13 @@ public class GridField{
         public void actionPerformed(ActionEvent e) {
             LaneButton btn = (LaneButton)e.getSource();
             int pos = btn.getPos();
-            if(btn.getText().equals("")){
+            if (btn.getText().equals(".")) {
+                Icon sun = new ImageIcon("icon/Blank.png");
+                btn.setIcon(sun);
+                p.setSunPoint(p.getSunPoints()+25);
+                sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
+            }
+            else if(btn.getText().equals("")){
                 if(buyPlant.equals("Plant A")){
                     Plant pnew = new PlantA(pos, arrP);
                     Icon iconA = new ImageIcon("icon/PlantA.png");
@@ -173,11 +182,12 @@ public class GridField{
                     sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
-                } else if(buyPlant.equals("")){
+                } else if (buyPlant.equals("")){
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "Silahkan pilih tanaman terlebih dahulu");
                 }
-            } else{
+            }
+            else{
                 JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(frame, "Petak telah terisi.");
             }
@@ -245,6 +255,11 @@ public class GridField{
 
     public void addFireBul(int position) {
         Icon icon = new ImageIcon("icon/FireBul.png");
+        arrayButton[position].setIcon(icon);
+    }
+
+    public void addSunIcon(int position) {
+        Icon icon = new ImageIcon("icon/sun.png");
         arrayButton[position].setIcon(icon);
     }
 

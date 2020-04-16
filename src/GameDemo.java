@@ -49,6 +49,8 @@ public class GameDemo {
         PVZThread RzomB = new PVZThread("zombieThread", "ZB", x, p);
         RzomB.start();
 
+        PVZThread Rsun = new PVZThread("sunThread", "S", x, p);
+        Rsun.start();
     }
 
     static class PVZThread implements Runnable {
@@ -78,9 +80,9 @@ public class GameDemo {
 
                     if(threadName.equals("bulletThread")){
                         p.setGiliran(p.getGiliran()+1);
-                        if (p.getGiliran()%2 == 0){
-                            p.setSunPoint(p.getSunPoints()+25);
-                        }
+                        // if (p.getGiliran()%2 == 0){
+                        //     p.setSunPoint(p.getSunPoints()+25);
+                        // }
                         grid.getSunPointsView().setText("Jumlah SunPoints: " + p.getSunPoints());
                         if (entityType.equals("NormalBul")){
                             System.out.println("NormaBul run");
@@ -217,6 +219,13 @@ public class GameDemo {
                             }
                             Thread.sleep(2*1000); //frekuensi move dan attack Zombie B
                         }
+                    }
+                    else if (threadName.equals("sunThread")) {
+                        SunPoint sun = new SunPoint();
+                        sun.generateSunPoint(arrZ, arrP, arrB, grid);
+                        Thread.sleep(3*1000);
+                        sun.deleteSun(grid);
+                        Thread.sleep(6*1000);
                     }
                     // Let the thread sleep for a while.
                     if (p.gameOver(arrZ, arrP)) {

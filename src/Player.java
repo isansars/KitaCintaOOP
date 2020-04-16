@@ -36,7 +36,7 @@ public class Player{
         // Prioritas 1 : bullet
         for (int i = 59; i >= 0; i --) {
             if (arrB.getEntity(i) != null) {
-                arrB.getEntity(i).move(grid, arrB, arrZ);
+                arrB.getEntity(i).move(grid, arrB, arrZ, arrP);
             }
         }
         for (int i = 0; i <= 59; i ++) {
