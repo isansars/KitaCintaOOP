@@ -223,9 +223,9 @@ public class GameDemo {
                     else if (threadName.equals("sunThread")) {
                         SunPoint sun = new SunPoint();
                         sun.generateSunPoint(arrZ, arrP, arrB, grid);
-                        Thread.sleep(3*1000);
+                        Thread.sleep(3*1000); //waktu hidup sunPoint
                         sun.deleteSun(grid);
-                        Thread.sleep(6*1000);
+                        Thread.sleep(6*1000); //waktu tunggu ke generator sunPoint selanjutnya
                     }
                     // Let the thread sleep for a while.
                     if (p.gameOver(arrZ, arrP)) {

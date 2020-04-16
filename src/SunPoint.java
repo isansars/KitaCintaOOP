@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.*; 
 import javax.swing.JTextPane;
+import java.awt.Font;
 
 public class SunPoint {
     private static final Icon sunIcon = new ImageIcon("icon/sun.png");
@@ -37,6 +38,7 @@ public class SunPoint {
             grid.addSunIcon(position);
             grid.editGrid(".", position);
             grid.getButton(position).setForeground(Color.yellow);
+            grid.getButton(position).setFont(new Font("Arial", Font.PLAIN, 1));
         }
     }
 
