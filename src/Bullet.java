@@ -78,9 +78,11 @@ public class Bullet{
                 //grid.editGrid(bulletType, position);
                 if (bulletType == "o") {
                     grid.addFireBul(position);
+                    grid.editGrid("", position);
                 }
                 else if (bulletType == "->") {
                     grid.addNormalBul(position);
+                    grid.editGrid("", position);
                 }
     
                 // ubah ArrayList

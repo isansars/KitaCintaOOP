@@ -92,9 +92,11 @@ public abstract class Zombie{
                 //System.out.println(grid.getTextButton(position));
                 if (type == "ZA") {
                     grid.addZombieA(position);
+                    grid.editGrid("", position);
                 }
                 else if (type == "ZB") {
                     grid.addZombieB(position);
+                    grid.editGrid("", position);
                 }
                 //System.out.println(grid.getTextButton(position));
 
@@ -113,9 +115,11 @@ public abstract class Zombie{
                 //System.out.println(grid.getTextButton(position));
                 if (type == "ZA") {
                     grid.addZombieA(position);
+                    grid.editGrid("", position);
                 }
                 else if (type == "ZB") {
                     grid.addZombieB(position);
+                    grid.editGrid("", position);
                 }
                 //System.out.println(grid.getTextButton(position));
 
@@ -134,9 +138,11 @@ public abstract class Zombie{
                 //System.out.println(grid.getTextButton(position));
                 if (type == "ZA") {
                     grid.addZombieA(position);
+                    grid.editGrid("", position);
                 }
                 else if (type == "ZB") {
                     grid.addZombieB(position);
+                    grid.editGrid("", position);
                 }
                 System.out.println(grid.getTextButton(position));
             } 

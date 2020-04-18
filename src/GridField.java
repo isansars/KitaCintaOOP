@@ -155,41 +155,45 @@ public class GridField{
         public void actionPerformed(ActionEvent e) {
             LaneButton btn = (LaneButton)e.getSource();
             int pos = btn.getPos();
-            if (btn.getText().equals(".")) {
-                Icon sun = new ImageIcon("icon/Blank.png");
-                btn.setIcon(sun);
-                p.setSunPoint(p.getSunPoints()+25);
-                sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
-            }
-            else if(btn.getText().equals("")){
-                if(buyPlant.equals("Plant A")){
-                    Plant pnew = new PlantA(pos, arrP);
-                    Icon iconA = new ImageIcon("icon/PlantA.png");
-                    btn.setText(pnew.getPlantType());
-                    btn.setIcon(iconA);
-                    p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
-                    setBuyPlant("");
+            try {
+                if (btn.getText().equals(".")) {
+                    Icon sun = new ImageIcon("icon/Blank.png");
+                    btn.setIcon(sun);
+                    p.setSunPoint(p.getSunPoints()+25);
                     sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
-                } else if(buyPlant.equals("Plant B")){
-                    Plant pnew = new PlantB(pos, arrP);
-                    Icon iconB = new ImageIcon("icon/PlantB.png");
-                    btn.setText(pnew.getPlantType());
-                    btn.setIcon(iconB);
-                    p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
-                    setBuyPlant("");
-                    sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
-                } else if (buyPlant.equals("")){
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame, "Silahkan pilih tanaman terlebih dahulu");
                 }
-            }
-            else{
+                else if(btn.getText().equals("")){
+                    if(buyPlant.equals("Plant A")){
+                        Plant pnew = new PlantA(pos, arrP);
+                        Icon iconA = new ImageIcon("icon/PlantA.png");
+                        btn.setText(pnew.getPlantType());
+                        btn.setIcon(iconA);
+                        p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
+                        setBuyPlant("");
+                        sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
+                        JFrame frame = new JFrame();
+                        JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
+                    } else if(buyPlant.equals("Plant B")){
+                        Plant pnew = new PlantB(pos, arrP);
+                        Icon iconB = new ImageIcon("icon/PlantB.png");
+                        btn.setText(pnew.getPlantType());
+                        btn.setIcon(iconB);
+                        p.setSunPoint(p.getSunPoints()-pnew.getSunPoints());
+                        setBuyPlant("");
+                        sunPointsView.setText("Jumlah SunPoints: " + p.getSunPoints());
+                        JFrame frame = new JFrame();
+                        JOptionPane.showMessageDialog(frame, "Pembelian berhasil");
+                    } else if (buyPlant.equals("")){
+                        JFrame frame = new JFrame();
+                        JOptionPane.showMessageDialog(frame, "Silahkan pilih tanaman terlebih dahulu");
+                    }
+                }
+                else{
+                    throw new SpaceFullException();
+                }
+            } catch (SpaceFullException x) {
                 JFrame frame = new JFrame();
-                JOptionPane.showMessageDialog(frame, "Petak telah terisi.");
+                JOptionPane.showMessageDialog(frame, "[" + x.getClass().getName() + "] " + x.getMessage());
             }
         }
     }
