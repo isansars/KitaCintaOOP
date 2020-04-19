@@ -65,8 +65,13 @@ public class GridField{
     public JLabel getSunPointsView(){
         return sunPointsView;
     }
+
+    // Setter
     public void setSunPointsView(JLabel sunPointsView){
         this.sunPointsView = sunPointsView;
+    }
+    public void setBuyPlant(String buyPlant){
+        this.buyPlant = buyPlant;
     }
 
     // Method 
@@ -228,11 +233,6 @@ public class GridField{
     public void sunPointsMinPrompt(){
         JFrame frame = new JFrame();
         JOptionPane.showMessageDialog(frame, "Jumlah SunPoints yang Anda miliki tidak mencukupi.");
-    }
-
-    // Setter
-    public void setBuyPlant(String buyPlant){
-        this.buyPlant = buyPlant;
     }
     
     // Method
