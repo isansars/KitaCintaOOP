@@ -18,9 +18,6 @@ public class GameDemo {
         GridField x = new GridField(p, arrZ, arrP, arrB);
         Zombie z0 = new ZombieA(1, x, arrZ);
 
-        System.out.print("sunPoint: ");
-        System.out.println(p.getSunPoints());
-
         PVZThread RNbul = new PVZThread("bulletThread", "NormalBul", x, p);
         RNbul.start();
         PVZThread RFbul = new PVZThread("bulletThread", "FireBul", x, p);
