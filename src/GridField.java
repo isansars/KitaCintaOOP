@@ -21,6 +21,7 @@ public class GridField{
     private EntityArray<Plant> arrP;
     private EntityArray<Bullet> arrB;
 
+    // Konstruktor
     public GridField(Player player, EntityArray<Zombie> arrZ, EntityArray<Plant> arrP, EntityArray<Bullet> arrB){  
         p = player;
         buyPlant = "";
@@ -68,6 +69,8 @@ public class GridField{
         this.sunPointsView = sunPointsView;
     }
 
+    // Method 
+    // Membuat Panel Buy
     public void createBuyPane(){
         buyPane = new JPanel();
         
@@ -77,6 +80,7 @@ public class GridField{
         gbcs.anchor = GridBagConstraints.FIRST_LINE_START;
         buyPane.add(sunPointsView, gbcs);
 
+        // Membuat constraint pada layout
         GridBagConstraints gbc = new GridBagConstraints();
         int top = 0;
         int bottom = 0;
@@ -86,7 +90,7 @@ public class GridField{
         buyPane.setLayout(gridbag);
         
 
-        // Buat Plant Button - BUY
+        // Instansiasi Plant Button - BUY
         // Plant A
         buyButtonA = new JButton( new AbstractAction("Plant A (25 SP)") {
             @Override
@@ -125,6 +129,7 @@ public class GridField{
         buyPane.setVisible(true);
     }
 
+    // Membuat panel lane
     public void createLanePane(){
         lanePane = new JPanel();
         arrayButton = new LaneButton[60];
@@ -144,17 +149,19 @@ public class GridField{
             lanePane.add(arrayButton[i]);
         }
 
-        //setting grid layout of 4 rows and 7 columns  
+        // Setting grid layout of 4 rows and 15 columns  
         lanePane.setLayout(new GridLayout(4,15));  
         lanePane.setSize(1500,400);
         lanePane.setVisible(true);
     }
 
+    // Method action ketika grid pada lane ditekan
     class LaneActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             LaneButton btn = (LaneButton)e.getSource();
             int pos = btn.getPos();
+            // Apabila memilih petak yang telah terisi maka akan tampil pesan exception
             try {
                 if (btn.getText().equals(".")) {
                     Icon sun = new ImageIcon("icon/Blank.png");
@@ -198,92 +205,88 @@ public class GridField{
         }
     }
 
+    // Inner class turunan JButton
     class LaneButton extends JButton{
         int pos;
 
+        // Konstruktor
         public LaneButton(String s){
             super(s);
         }
 
+        // Getter
         public int getPos(){
             return pos;
         }
+        // Setter
         public void setPos(int pos){
             this.pos = pos;
         }
     }
 
+    // Method yang menampilkan prompt apabila sunPoints kurang dari jumlah yang dibutuhkan untuk membeli tanaman
     public void sunPointsMinPrompt(){
         JFrame frame = new JFrame();
         JOptionPane.showMessageDialog(frame, "Jumlah SunPoints yang Anda miliki tidak mencukupi.");
     }
 
+    // Setter
     public void setBuyPlant(String buyPlant){
         this.buyPlant = buyPlant;
     }
     
+    // Method
+    // Menghapus Icon pada Button
     public void deleteIcon(int position) {
     // position adalah index dari grid yang ingin diubah, code adalah karakter yang akan muncul di grid tsb
         Icon icon = new ImageIcon("icon/Blank.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Mengubah text pada Button
     public void editGrid(String code, int position) {
         arrayButton[position].setText(code);
     }
 
+    // Menambahkan PlantA
     public void addPlantA(int position) {
         Icon icon = new ImageIcon("icon/PlantA.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan PlantB
     public void addPlantB(int position) {
         Icon icon = new ImageIcon("icon/PlantB.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan ZombieA
     public void addZombieA(int position) {
         Icon icon = new ImageIcon("icon/ZombieA.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan ZombieB
     public void addZombieB(int position) {
         Icon icon = new ImageIcon("icon/ZombieB.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan NormalBul
     public void addNormalBul(int position) {
         Icon icon = new ImageIcon("icon/NormalBul.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan FireBul
     public void addFireBul(int position) {
         Icon icon = new ImageIcon("icon/FireBul.png");
         arrayButton[position].setIcon(icon);
     }
 
+    // Menambahkan Sun
     public void addSunIcon(int position) {
         Icon icon = new ImageIcon("icon/sun.png");
         arrayButton[position].setIcon(icon);
     }
-
-
-//     public boolean gameOver() {
-//         if (getTextButton(1).equals("ZA")) {
-//             return getTextButton(0).equals("");
-//         }
-//         else if (getTextButton(16).equals("ZA")) {
-//             return getTextButton(15).equals("");
-//         }
-//         else if (getTextButton(31).equals("ZA")) {
-//             return getTextButton(30).equals("");
-//         }
-//         else if (getTextButton(46).equals("ZA")) {
-//             return getTextButton(45).equals("");
-//         }
-//         else {
-//             return ((getTextButton(0).equals("ZA")) || (getTextButton(15).equals("ZA")) || (getTextButton(30).equals("ZA")) || (getTextButton(45).equals("ZA")) || (getTextButton(0).equals("ZB")) || (getTextButton(15).equals("ZB")) || (getTextButton(30).equals("ZB")) || (getTextButton(45).equals("ZB")))
-//             || (getTextButton(1).equals("ZA")) || (getTextButton(16).equals("ZA")) || (getTextButton(31).equals("ZA")) || (getTextButton(46).equals("ZA"));
-//         }
-//     }
 }  
