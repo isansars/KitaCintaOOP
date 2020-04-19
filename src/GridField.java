@@ -160,6 +160,7 @@ public class GridField{
         lanePane.setVisible(true);
     }
 
+    // Inner Class yang mengimplementasikan ActionListener
     // Method action ketika grid pada lane ditekan
     class LaneActionListener implements ActionListener{
         @Override
