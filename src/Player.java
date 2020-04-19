@@ -74,49 +74,49 @@ public class Player{
     }
 
     // Method untuk player membeli plant
-    public void buy(GridField grid, EntityArray<Plant> arrP) {
-        Scanner input = new Scanner(System.in);
+    // public void buy(GridField grid, EntityArray<Plant> arrP) {
+    //     Scanner input = new Scanner(System.in);
 
-        System.out.println("Daftar harga: ");
-        System.out.println("1. PlantA: 25 sunPoint");
-        System.out.println("2. PlantB: 50 sunPoint");
-        System.out.print("Masukkan angka 1 atau 2 untuk memilih tanaman:");
-        String read = input.next();
-        if ((read.equals("1")) && (this.sunPoints < 25)){
-            System.out.println("Sun Points tidak mencukupi.");
-        } else if ((read.equals("2")) && (this.sunPoints < 50)){
-            System.out.println("Sun Points tidak mencukupi.");
-        } else {
-            System.out.print("Masukkan row tanaman: ");
-            int row = input.nextInt();
-            System.out.print("Masukkan column tanaman: ");
-            int column = input.nextInt();
-            if (row >= 1 && row <= 4 && column >= 1 && column <= 15) {
-                // Cek petak
-                int pos = (column+((row-1)*15)-1);
-                if (!(grid.getTextButton(pos).equals(""))){
-                    System.out.println("Petak telah terisi.");
-                } else{
-                    if (read.equals("1")) {
-                        Plant pnew = new PlantA(row, column, grid, arrP);
-                        sunPoints -= pnew.getSunPoints();
-                        System.out.println("Pembelian berhasil");
-                    }
-                    else if (read.equals("2")) {
-                        Plant pnew = new PlantB(row, column, grid, arrP);
-                        sunPoints -= pnew.getSunPoints();
-                        System.out.println("Pembelian berhasil");
-                    }
-                    else {
-                        System.out.println("Input Anda tidak valid");
-                    }
-                }
-            }
-            else {
-                System.out.println("Input Anda tidak valid");
-            }
-        }
-    }
+    //     System.out.println("Daftar harga: ");
+    //     System.out.println("1. PlantA: 25 sunPoint");
+    //     System.out.println("2. PlantB: 50 sunPoint");
+    //     System.out.print("Masukkan angka 1 atau 2 untuk memilih tanaman:");
+    //     String read = input.next();
+    //     if ((read.equals("1")) && (this.sunPoints < 25)){
+    //         System.out.println("Sun Points tidak mencukupi.");
+    //     } else if ((read.equals("2")) && (this.sunPoints < 50)){
+    //         System.out.println("Sun Points tidak mencukupi.");
+    //     } else {
+    //         System.out.print("Masukkan row tanaman: ");
+    //         int row = input.nextInt();
+    //         System.out.print("Masukkan column tanaman: ");
+    //         int column = input.nextInt();
+    //         if (row >= 1 && row <= 4 && column >= 1 && column <= 15) {
+    //             // Cek petak
+    //             int pos = (column+((row-1)*15)-1);
+    //             if (!(grid.getTextButton(pos).equals(""))){
+    //                 System.out.println("Petak telah terisi.");
+    //             } else{
+    //                 if (read.equals("1")) {
+    //                     Plant pnew = new PlantA(row, column, grid, arrP);
+    //                     sunPoints -= pnew.getSunPoints();
+    //                     System.out.println("Pembelian berhasil");
+    //                 }
+    //                 else if (read.equals("2")) {
+    //                     Plant pnew = new PlantB(row, column, grid, arrP);
+    //                     sunPoints -= pnew.getSunPoints();
+    //                     System.out.println("Pembelian berhasil");
+    //                 }
+    //                 else {
+    //                     System.out.println("Input Anda tidak valid");
+    //                 }
+    //             }
+    //         }
+    //         else {
+    //             System.out.println("Input Anda tidak valid");
+    //         }
+    //     }
+    // }
     public void addSunPoint(int sunPoints){
         this.sunPoints += sunPoints;
     }
