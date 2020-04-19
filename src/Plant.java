@@ -43,7 +43,7 @@ public abstract class Plant{
     }
     
     // Konstruktor
-    public Plant(String plantType, int health, int sunPoints, int attFreq, String bulletType, int baris, int kolom, GridField grid, EntityArray<Plant> arr) {
+    /*public Plant(String plantType, int health, int sunPoints, int attFreq, String bulletType, int baris, int kolom, GridField grid, EntityArray<Plant> arr) {
         this.plantType  = plantType;
         this.health     = health;
         this.sunPoints  = sunPoints;
@@ -53,7 +53,7 @@ public abstract class Plant{
         this.position   = (kolom+((baris-1)*15)-1);
         
         arr.add(this.position, this);
-    }
+    }*/
 
     public Plant(String plantType, int health, int sunPoints, int attFreq, String bulletType, int position, EntityArray<Plant> arr) {
         this.plantType  = plantType;
