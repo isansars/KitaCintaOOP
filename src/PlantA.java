@@ -9,7 +9,7 @@ public class PlantA extends Plant{
     }
 
     public PlantA(int position, EntityArray<Plant> arr){
-        super("PA", 50, 25, 4, "NormalBul", position, arr);
+        super("PA", 50, 25, 8000, "NormalBul", position, arr);
     }
 
     // Method
@@ -17,8 +17,6 @@ public class PlantA extends Plant{
         int i = 1;
         //ada tanaman lain di depannya
         while (arrP.getEntity(position + i) != null) {
-            //while (!(grid.getTextButton(position + i).equals(""))) {
-            //if ((grid.getTextButton(position + i).equals("ZA")) || grid.getTextButton(position + i).equals("ZB")) {
             i ++;
         }
         //ada zombie lain di depannya
@@ -26,7 +24,6 @@ public class PlantA extends Plant{
             if (arrZ.getEntity(position + i).getHealth() > 0) {
                 arrZ.getEntity(position + i).setHealth(arrZ.getEntity(position + i).getHealth() - 20);
                 System.out.println("attack");
-                //System.out.println(arrZ.getEntity(position + i).getHealth());
             }
             else if (arrZ.getEntity(position + i).getHealth() <= 0) {
                 arrZ.getEntity(position + i).die(grid, arrZ);

@@ -8,7 +8,7 @@ public class PlantB extends Plant{
         grid.addPlantB(position);
     }
     public PlantB(int position, EntityArray<Plant> arr){
-        super("PB", 60, 50, 3, "FireBul", position, arr);
+        super("PB", 60, 50, 6000, "FireBul", position, arr);
     }
 
     // Method

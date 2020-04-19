@@ -51,7 +51,7 @@ public abstract class Plant{
         this.turn       = attFreq;
         this.bulletType = bulletType;
         this.position   = (kolom+((baris-1)*15)-1);
-        //grid.editGrid(plantType, this.position);
+        
         arr.add(this.position, this);
     }
 
@@ -63,7 +63,7 @@ public abstract class Plant{
         this.turn       = attFreq;
         this.bulletType = bulletType;
         this.position   = position;
-        //grid.editGrid(plantType, this.position);
+        
         arr.add(this.position, this);
     }
     

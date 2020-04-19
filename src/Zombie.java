@@ -74,10 +74,8 @@ public abstract class Zombie{
     // Zombie bisa melompati zombie lain di depannya, asal nextPosition tidak sama
     // Zombie tidak bisa melompati plant
     // Zombie dengan plant di depannya akan tertahan di posisinya
-        //if ((!grid.getTextButton(position-1).equals("PA")) && (!grid.getTextButton(position-1).equals("PB"))) {
         if (arrP.getEntity(position-1) == null) {
             // Mengubah posisi yang akan ditempati oleh zombie berdasarkan ada atau tidaknya entitas pada nextPosition
-            //if (grid.getTextButton(nextPosition).equals("")){
             if (arrZ.getEntity(nextPosition) == null && arrP.getEntity(nextPosition) == null) {
                 //delete posisi lama
                 grid.editGrid("", position);
@@ -87,9 +85,7 @@ public abstract class Zombie{
                 //ubah jadi posisi baru
                 position = nextPosition;
                 nextPosition = position - 1;
-                //grid.editGrid(type, position);
                 arrZ.add(position, this);
-                //System.out.println(grid.getTextButton(position));
                 if (type == "ZA") {
                     grid.addZombieA(position);
                     grid.editGrid("", position);
@@ -98,9 +94,8 @@ public abstract class Zombie{
                     grid.addZombieB(position);
                     grid.editGrid("", position);
                 }
-                //System.out.println(grid.getTextButton(position));
 
-            } //else if(grid.getTextButton(nextPosition).equals("PA") || grid.getTextButton(nextPosition).equals("PB")){
+            } 
             else if (arrP.getEntity(nextPosition) != null) {
                 //delete posisi lama
                 grid.editGrid("", position);
@@ -110,9 +105,9 @@ public abstract class Zombie{
                 //ubah jadi posisi baru
                 position = nextPosition + 1;
                 nextPosition = position - 1;
-                //grid.editGrid(type, position);
+              
                 arrZ.add(position, this);
-                //System.out.println(grid.getTextButton(position));
+              
                 if (type == "ZA") {
                     grid.addZombieA(position);
                     grid.editGrid("", position);
@@ -121,9 +116,9 @@ public abstract class Zombie{
                     grid.addZombieB(position);
                     grid.editGrid("", position);
                 }
-                //System.out.println(grid.getTextButton(position));
+              
 
-            } //else if(grid.getTextButton(nextPosition).equals("ZA") || grid.getTextButton(nextPosition).equals("ZB")){
+            } 
             else if (arrZ.getEntity(nextPosition) != null) {
                  //delete posisi lama
                  grid.editGrid("", position);
@@ -133,9 +128,9 @@ public abstract class Zombie{
                  //ubah jadi posisi baru
                  position = nextPosition - 1;
                  nextPosition = position - 1;
-                 //grid.editGrid(type, position);
+              
                  arrZ.add(position, this);
-                //System.out.println(grid.getTextButton(position));
+              
                 if (type == "ZA") {
                     grid.addZombieA(position);
                     grid.editGrid("", position);

@@ -14,16 +14,9 @@ public class Bullet{
         this.damage = damage;
         this.speed = speed;
 
-        // int temp = position;
-        // if (!grid.getTextButton(temp).equals("")) {
-        //     while (!grid.getTextButton(temp).equals("")) {
-        //         temp ++;
-        //     }
-        // }
         this.position = position;
         this.nextPosition = position + 1;
 
-        //grid.editGrid(this.bulletType, this.position);
         arr.add(this.position, this);
     }
 
@@ -66,16 +59,14 @@ public class Bullet{
                 grid.editGrid("", position);
                 grid.deleteIcon(position);
                 arr.delete(position);
-            }
-            //else if ((grid.getTextButton(nextPosition).equals(""))) {
-            else if (arrZ.getEntity(nextPosition) == null) {
+            } else if (arrZ.getEntity(nextPosition) == null) {
                 //TO DOmengecek di antara position dengan nextPosition ada zombie atau tidak
                 // ubah GridField
                 grid.editGrid("", position);
                 grid.deleteIcon(position);
                 position = nextPosition;
                 nextPosition = position + 1;
-                //grid.editGrid(bulletType, position);
+              
                 if (bulletType == "o") {
                     grid.addFireBul(position);
                     grid.editGrid("", position);
@@ -101,11 +92,8 @@ public class Bullet{
         }
     }
 
-    //attack harus diperbaiki
     public void attack(GridField grid, EntityArray<Bullet> arrB, EntityArray<Zombie> arrZ) {
         if (!isOutRange()) {
-            //System.out.println(nextPosition);
-            //if (grid.getTextButton(position + 1).equals("ZA") || grid.getTextButton(position + 1).equals("ZB")) {
             if (arrZ.getEntity(position + 1) != null) {
                 // serang zombie
                 int health = arrZ.getEntity(position + 1).getHealth() - arrB.getEntity(position).getDamage();
@@ -119,32 +107,6 @@ public class Bullet{
                 grid.deleteIcon(position);
                 arrB.delete(position);
             }
-            // else if (arrZ.getEntity(position + 2) != null && bulletType.equals('o')) {
-            //      // serang zombie
-            //     int health = arrZ.getEntity(position + 2).getHealth() - arrB.getEntity(position).getDamage();
-            //     arrZ.getEntity(position+2).setHealth(health);
-            //     // Health Zombie = 0, die.
-            //     if (arrZ.getEntity(position+2).getHealth() <= 0){
-            //         arrZ.getEntity(position+2).die(grid, arrZ);
-            //     }
-            //     // Menghilang setelah menyerang
-            //     grid.editGrid("", position);
-            //     grid.deleteIcon(position);
-            //     arrB.delete(position);
-            // }
-            // else if (arrZ.getEntity(position + 3) != null && bulletType == "o") {
-            //     // serang zombie
-            //    int health = arrZ.getEntity(position + 3).getHealth() - arrB.getEntity(position).getDamage();
-            //    arrZ.getEntity(position+3).setHealth(health);
-            //     // Health Zombie = 0, die.
-            //    if (arrZ.getEntity(position+3).getHealth() <= 0){
-            //        arrZ.getEntity(position+3).die(grid, arrZ);
-            //    }
-            //    // Menghilang setelah menyerang
-            //    grid.editGrid("", position);
-            //    grid.deleteIcon(position);
-            //    arrB.delete(position);
-            // }
         }
     }
 
