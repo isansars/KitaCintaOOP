@@ -3,11 +3,6 @@ public class PlantA extends Plant{
 
     // Konstruktor
     // health : 50, sunPoint : 25, attfreq : 8000
-    public PlantA(int baris, int kolom, GridField grid, EntityArray<Plant> arr){
-        super("PA", 50, 25, 8000, "NormalBul", baris, kolom, grid, arr);
-        grid.addPlantA(position);
-    }
-
     public PlantA(int position, EntityArray<Plant> arr){
         super("PA", 50, 25, 8000, "NormalBul", position, arr);
     }
